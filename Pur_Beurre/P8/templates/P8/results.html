@@ -6,7 +6,17 @@
 {% endblock title%}
 
 {% block content %}
-<h1 class="text-Okay">Results</h1>
-<p> Test texte en rouge ! </p>
-<h2>{{ ma_var }}  </h2>
+  <div class="row text-white" >
+    <div class="col-md-4 p-3 bg-dark">
+      Résultat 1
+    </div>
+
+    <div class="col-md-4 p-3 bg-success">
+      Résultat 2
+    </div>
+
+    <div class="col-md-4 p-3 bg-danger">
+      Résultat 3
+    </div>
+  </div>
 {% endblock content %}

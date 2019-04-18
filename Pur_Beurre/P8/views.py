@@ -5,6 +5,7 @@ from django.shortcuts import render
 def Legal_notice(request):
     return render(request, 'P8/Legal_Notice.html')
 
-""" Création de la vue pour les mentions légales """
-
+""" Création de la vue pour les resultats """
+def results(request):
+    return render(request, 'P8/results.html')
 # Create your views here.

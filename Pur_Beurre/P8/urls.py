@@ -7,4 +7,5 @@ from . import views
 
 urlpatterns = [
     path('Legal_notice',views.Legal_notice),
+    path('results', views.results),
 ]
