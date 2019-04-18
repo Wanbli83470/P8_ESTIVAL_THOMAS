@@ -15,10 +15,36 @@
             Dawa
            {% endblock title%}</title>
 </head>
-<body class="p-2">
-<p>
-<i class="fas fa-adjust"></i>
-</p>
+<body>
+
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <!-- Logo Pur Beurre -->
+  <a class="navbar-brand" href="#">
+    <img class="img-fluid w-50" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
+  </a>
+    <!-- Titre -->
+    <h2>Pur Beurre</h2>
+    <!-- Search field -->
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  </form>
+    <!-- Icone mon compte -->
+  <a class="navbar-brand" href="#">
+    <i class="fas fa-user-circle"></i>
+  </a>
+
+     <!-- Icone Carottes -->
+  <a class="navbar-brand" href="#">
+    <img class="img-fluid img-rounded w-50" src="{% static 'P8/images/carotte.svg' %}" alt="Mon image" />
+  </a>
+     <!-- Icone Deconnexion -->
+  <a class="navbar-brand" href="#">
+    <i class="fas fa-sign-out-alt"></i>
+  </a>
+
+
+</nav>
 {% block content %}
 
 {% endblock content %}
