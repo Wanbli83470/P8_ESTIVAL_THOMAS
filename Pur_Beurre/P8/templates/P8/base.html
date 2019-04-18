@@ -50,6 +50,7 @@
 {% endblock content %}
 
      <!-- Zone footer -->
+
 <footer>
   <div class="mt-5 p-3 bg-light text-muted border-top border-primary">
     <p class="text-left">Le footer</p>
@@ -57,9 +58,16 @@
   </div>
 </footer>
 
+{% if user.is_authenticated %}
+
+Bien le bonjour  {{ user.username }} !
 <a href="{% url 'deconnexion' %}">
   <button type="button" class="btn btn-outline-danger">Se déconnecter</button>
 </a>
 
+{% else %}
+{% endif %}
+<p class="{{ var_color }}">TEXTE TEST</p>
+<p>{{ var_color }}</p>
 </body>
 </html>

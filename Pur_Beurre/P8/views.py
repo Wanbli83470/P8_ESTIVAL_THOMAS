@@ -4,9 +4,11 @@ from .forms import ConnexionForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
+var_color = "text-danger"
 """ Création de la vue pour les mentions légales """
 def Legal_notice(request):
-    return render(request, 'P8/Legal_Notice.html')
+    var_color = "text-danger"
+    return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
 
 """ Création de la vue pour les resultats """
 def results(request):
