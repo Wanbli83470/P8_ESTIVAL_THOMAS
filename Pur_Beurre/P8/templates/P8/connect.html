@@ -1,0 +1,26 @@
+
+{% extends "P8/base.html" %}
+
+{% block title%}
+    Connect
+{% endblock title%}
+
+{% block content %}
+
+<h1>Se connecter</h1>
+
+{% if error %}
+<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+{% endif %}
+
+{% if user.is_authenticated %}
+Vous êtes connecté, {{ user.username }} !
+{% else %}
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Se connecter" class="btn btn-outline-primary">Se connecter</button>
+</form>
+{% endif %}
+
+{% endblock content %}

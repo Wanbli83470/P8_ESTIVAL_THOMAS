@@ -8,4 +8,6 @@ from . import views
 urlpatterns = [
     path('Legal_notice',views.Legal_notice),
     path('results', views.results),
+    path('connexion', views.connexion, name="connexion"),
+    path('deconnexion', views.deconnexion, name="deconnexion"),
 ]
