@@ -4,10 +4,11 @@ from .forms import ConnexionForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
-var_color = "text-danger"
+"""Couleur initial sans connexion"""
+var_color = "text-warning"
+
 """ Création de la vue pour les mentions légales """
 def Legal_notice(request):
-    var_color = "text-danger"
     return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
 
 """ Création de la vue pour les resultats """
@@ -18,6 +19,7 @@ def results(request):
 from django.contrib.auth import authenticate, login
 
 def connexion(request):
+    global var_color
     error = False
     print("vue connexion")
     if request.method == "POST":
@@ -30,14 +32,18 @@ def connexion(request):
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
+                var_color = "text-danger"
+                print("Var color devient rouge")
             else: # sinon une erreur sera affichée
                 print("Else !")
                 error = True
     else:
         form = ConnexionForm()
 
-    return render(request, 'P8/connect.html', locals())
+    return render(request, 'P8/connect.html', locals(), {"var_color": var_color})
 
 def deconnexion(request):
+    global var_color
+    var_color = "text-success"
     logout(request)
-    return render(request, 'P8/home.html')
+    return render(request, 'P8/home.html', {"var_color": var_color})
