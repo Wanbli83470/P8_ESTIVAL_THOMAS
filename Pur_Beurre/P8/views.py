@@ -17,16 +17,19 @@ from django.contrib.auth import authenticate, login
 
 def connexion(request):
     error = False
-
+    print("vue connexion")
     if request.method == "POST":
-        form = ConnexionForm(request.POST)
+        print("Méthode POST ok")
+        form = ConnexionForm(request.POST or None)
         if form.is_valid():
+            print("form valide !")
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
             else: # sinon une erreur sera affichée
+                print("Else !")
                 error = True
     else:
         form = ConnexionForm()

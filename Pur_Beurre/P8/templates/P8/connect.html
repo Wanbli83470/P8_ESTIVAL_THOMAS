@@ -16,7 +16,8 @@
 {% if user.is_authenticated %}
 Vous êtes connecté, {{ user.username }} !
 {% else %}
-<form method="post" action=".">
+
+<form action="{% url 'connexion' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" value="Se connecter" class="btn btn-outline-primary">Se connecter</button>
