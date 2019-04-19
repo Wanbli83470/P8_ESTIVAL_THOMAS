@@ -21,19 +21,20 @@
   <div class="row bg-light border-bottom border-primary">
 
     <!-- Logo Pur Beurre -->
-    <div class="col-md-1 col-sm-6 align-self-center">
-      <a href="#">
-        <img class="img-fluid w-50" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
+    <div class="col-md-1 col-sm-6 align-self-center text-center">
+      <a class="align-self-center" href="#">
+        <img class="align-self-center w-100" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
       </a>
     </div>
 
       <!-- Titre -->
-    <div class="col-md-1 col-sm-6 align-self-center"><h2>Pur Beurre</h2>
+    <div class="col-md-2 col-sm-6 align-self-center">
+      <h1 class="text-center">Pur Beurre</h1>
     </div>
 
       <!-- Search field -->
-    <div class="col-md-2 col-sm-12 offset-md-4 align-self-center">
-      <form class="form-inline">
+    <div class="col-md-3 col-sm-12 offset-md-3 align-self-center">
+      <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
     </div>
@@ -42,7 +43,7 @@
 
   <div class="col-md-1 col-sm-12 align-self-center">
       <a href="#">
-        <h1>
+        <h1 class="text-center">
           <i class="fas fa-user-circle"></i>
         </h1>
 
@@ -54,14 +55,16 @@
        <!-- Icone Carottes -->
   <div class="col-md-1 col-sm-12 align-self-center">
     <a href="#">
-      <img class="img-fluid img-rounded w-50" src="{% static 'P8/images/carotte.svg' %}" alt="Mon image" />
+      <img class="img-fluid " src="{% static 'P8/images/carotte.svg' %}" alt="Mon image" />
     </a>
   </div>
 
        <!-- Icone Deconnexion -->
   <div class="col-md-1 col-sm-12 align-self-center">
     <a href="#">
+      <h1 class="text-center">
       <i class="fas fa-sign-out-alt"></i>
+      </h1>
     </a>
   </div>
 
@@ -75,9 +78,17 @@
      <!-- Zone footer -->
 
 <footer class="fixed-bottom">
-  <div class="mt-5 p-3 bg-light text-muted border-top border-primary">
-    <p class="text-left d-inline">Le footer</p>
-    <p class="text-right">Mentions légals</p>
+
+  <div class="row mt-5 p-4 bg-light text-muted border-top border-primary">
+    <div class="col-6">
+      <a href="#">
+        <h3 class="text-left d-inline">Mentions légals</h3>
+      </a>
+    </div>
+    <div class="col-6">
+      <h3 class="text-right">Conctact</h3>
+    </div>
+
   </div>
 </footer>
 
