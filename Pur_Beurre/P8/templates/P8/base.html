@@ -17,41 +17,64 @@
 </head>
 <body>
 
+<div class="container-fluid">
+  <div class="row bg-light border-bottom border-primary">
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
     <!-- Logo Pur Beurre -->
-  <a class="navbar-brand" href="#">
-    <img class="img-fluid w-50" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
-  </a>
-    <!-- Titre -->
-    <h2>Pur Beurre</h2>
-    <!-- Search field -->
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  </form>
-    <!-- Icone mon compte -->
-  <a class="navbar-brand" href="#">
-    <i class="fas fa-user-circle"></i>
-  </a>
+    <div class="col-md-1 col-sm-6 align-self-center">
+      <a href="#">
+        <img class="img-fluid w-50" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
+      </a>
+    </div>
 
-     <!-- Icone Carottes -->
-  <a class="navbar-brand" href="#">
-    <img class="img-fluid img-rounded w-50" src="{% static 'P8/images/carotte.svg' %}" alt="Mon image" />
-  </a>
-     <!-- Icone Deconnexion -->
-  <a class="navbar-brand" href="#">
-    <i class="fas fa-sign-out-alt"></i>
-  </a>
+      <!-- Titre -->
+    <div class="col-md-1 col-sm-6 align-self-center"><h2>Pur Beurre</h2>
+    </div>
+
+      <!-- Search field -->
+    <div class="col-md-2 col-sm-12 offset-md-4 align-self-center">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+
+      <!-- Icone mon compte -->
+
+  <div class="col-md-1 col-sm-12 align-self-center">
+      <a href="#">
+        <h1>
+          <i class="fas fa-user-circle"></i>
+        </h1>
+
+      </a>
+  </div>
 
 
-</nav>
+
+       <!-- Icone Carottes -->
+  <div class="col-md-1 col-sm-12 align-self-center">
+    <a href="#">
+      <img class="img-fluid img-rounded w-50" src="{% static 'P8/images/carotte.svg' %}" alt="Mon image" />
+    </a>
+  </div>
+
+       <!-- Icone Deconnexion -->
+  <div class="col-md-1 col-sm-12 align-self-center">
+    <a href="#">
+      <i class="fas fa-sign-out-alt"></i>
+    </a>
+  </div>
+
+  </div>
+</div>
+
 {% block content %}
 
 {% endblock content %}
 
      <!-- Zone footer -->
 
-<footer>
+<footer class="fixed-bottom">
   <div class="mt-5 p-3 bg-light text-muted border-top border-primary">
     <p class="text-left d-inline">Le footer</p>
     <p class="text-right">Mentions légals</p>
