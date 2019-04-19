@@ -7,7 +7,8 @@ from django.urls import reverse
 """Couleur initial sans connexion"""
 var_color = "text-primary"
 
-
+def base(request):
+    return render(request, 'P8/base.html', {"var_color": var_color})
 """ Création de la vue pour les mentions légales """
 def Legal_notice(request):
     return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
