@@ -3,6 +3,9 @@
 <!doctype html>
 <html lang="fr">
   <head>
+    
+  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +21,7 @@
 <body>
 
 <div class="container-fluid">
-  <div class="row bg-light border-bottom border-primary">
+  <div class="row bg-light border-bottom border-{{ var_color }}">
 
     <!-- Logo Pur Beurre -->
     <div class="col-md-1 col-sm-6 align-self-center text-center">
@@ -29,7 +32,7 @@
 
       <!-- Titre -->
     <div class="col-md-2 col-sm-6 align-self-center">
-      <h1 class="text-center">Pur Beurre</h1>
+      <h1 class="text-center text-{{ var_color }}">Pur Beurre</h1>
     </div>
 
       <!-- Search field -->
@@ -43,7 +46,7 @@
 
   <div class="col-md-1 col-sm-12 align-self-center">
       <a href="#">
-        <h1 class="text-center">
+        <h1 class="text-center text-{{ var_color }}">
           <i class="fas fa-user-circle"></i>
         </h1>
 
@@ -62,7 +65,7 @@
        <!-- Icone Deconnexion -->
   <div class="col-md-1 col-sm-12 align-self-center">
     <a href="#">
-      <h1 class="text-center">
+      <h1 class="text-center text-{{ var_color }}">
       <i class="fas fa-sign-out-alt"></i>
       </h1>
     </a>
@@ -70,8 +73,9 @@
 
   </div>
 </div>
-{{ var_color }}
-
+<p> Variable var_color : "
+{{ var_color }}"
+</p>
 {% block content %}
 
 {% endblock content %}
@@ -80,10 +84,10 @@
 
 <footer class="fixed-bottom">
 
-  <div class="row mt-5 p-4 bg-light text-muted border-top border-primary">
+  <div class="row mt-5 p-4 bg-light text-muted border-top border-{{ var_color }}">
     <div class="col-6">
       <a href="#">
-        <h3 class="text-left d-inline">Mentions légals</h3>
+        <h3 class="text-left d-inline text-{{ var_color }}">Mentions légals</h3>
       </a>
     </div>
     <div class="col-6">

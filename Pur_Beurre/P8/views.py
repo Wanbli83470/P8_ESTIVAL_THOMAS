@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
 """Couleur initial sans connexion"""
-var_color = "text-primary"
+var_color = "primary"
 
 def base(request):
     return render(request, 'P8/base.html', {"var_color": var_color})
@@ -15,10 +15,10 @@ def Legal_notice(request):
 
 """ Création de la vue pour les resultats """
 def results(request):
-    return render(request, 'P8/results.html')
+    return render(request, 'P8/results.html', {"var_color": var_color})
 
 def accueil(request):
-    return render(request, 'P8/home.html')
+    return render(request, 'P8/home.html', {"var_color": var_color})
 
 from django.contrib.auth import authenticate, login
 
@@ -36,8 +36,8 @@ def connexion(request):
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
-                var_color = "text-warning"
-                print("Var color devient rouge")
+                var_color = "warning"
+                print("Var color devient orange")
             else: # sinon une erreur sera affichée
                 print("Else !")
                 error = True
@@ -48,6 +48,7 @@ def connexion(request):
 
 def deconnexion(request):
     global var_color
-    var_color = "text-success"
     logout(request)
+    var_color = "primary"
+    print("déconnexion : var_color devient bleu")
     return render(request, 'P8/home.html', {"var_color": var_color})
