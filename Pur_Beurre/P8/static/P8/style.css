@@ -27,7 +27,6 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
-  --Okay: #87FFE8;
   --Rooibos_chocolat: #C45525;
   --Moules_frites: #345A61;
   --Bonbon_rigolo: #86EBE6;
@@ -1361,22 +1360,6 @@ pre {
   .table-hover .table-dark:hover > th {
     background-color: #b9bbbe; }
 
-.table-Okay,
-.table-Okay > th,
-.table-Okay > td {
-  background-color: #ddfff9; }
-.table-Okay th,
-.table-Okay td,
-.table-Okay thead th,
-.table-Okay tbody + tbody {
-  border-color: #c1fff3; }
-
-.table-hover .table-Okay:hover {
-  background-color: #c4fff5; }
-  .table-hover .table-Okay:hover > td,
-  .table-hover .table-Okay:hover > th {
-    background-color: #c4fff5; }
-
 .table-Rooibos_chocolat,
 .table-Rooibos_chocolat > th,
 .table-Rooibos_chocolat > td {
@@ -2094,27 +2077,6 @@ fieldset:disabled a.btn {
     .btn-dark:not(:disabled):not(.disabled):active:focus, .btn-dark:not(:disabled):not(.disabled).active:focus, .show > .btn-dark.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5); }
 
-.btn-Okay {
-  color: #212529;
-  background-color: #87FFE8;
-  border-color: #87FFE8; }
-  .btn-Okay:hover {
-    color: #212529;
-    background-color: #61ffe1;
-    border-color: #54ffde; }
-  .btn-Okay:focus, .btn-Okay.focus {
-    box-shadow: 0 0 0 0.2rem rgba(120, 222, 203, 0.5); }
-  .btn-Okay.disabled, .btn-Okay:disabled {
-    color: #212529;
-    background-color: #87FFE8;
-    border-color: #87FFE8; }
-  .btn-Okay:not(:disabled):not(.disabled):active, .btn-Okay:not(:disabled):not(.disabled).active, .show > .btn-Okay.dropdown-toggle {
-    color: #212529;
-    background-color: #54ffde;
-    border-color: #47ffdc; }
-    .btn-Okay:not(:disabled):not(.disabled):active:focus, .btn-Okay:not(:disabled):not(.disabled).active:focus, .show > .btn-Okay.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(120, 222, 203, 0.5); }
-
 .btn-Rooibos_chocolat {
   color: #fff;
   background-color: #C45525;
@@ -2371,25 +2333,6 @@ fieldset:disabled a.btn {
     border-color: #343a40; }
     .btn-outline-dark:not(:disabled):not(.disabled):active:focus, .btn-outline-dark:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-dark.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5); }
-
-.btn-outline-Okay {
-  color: #87FFE8;
-  border-color: #87FFE8; }
-  .btn-outline-Okay:hover {
-    color: #212529;
-    background-color: #87FFE8;
-    border-color: #87FFE8; }
-  .btn-outline-Okay:focus, .btn-outline-Okay.focus {
-    box-shadow: 0 0 0 0.2rem rgba(135, 255, 232, 0.5); }
-  .btn-outline-Okay.disabled, .btn-outline-Okay:disabled {
-    color: #87FFE8;
-    background-color: transparent; }
-  .btn-outline-Okay:not(:disabled):not(.disabled):active, .btn-outline-Okay:not(:disabled):not(.disabled).active, .show > .btn-outline-Okay.dropdown-toggle {
-    color: #212529;
-    background-color: #87FFE8;
-    border-color: #87FFE8; }
-    .btn-outline-Okay:not(:disabled):not(.disabled):active:focus, .btn-outline-Okay:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Okay.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(135, 255, 232, 0.5); }
 
 .btn-outline-Rooibos_chocolat {
   color: #C45525;
@@ -3945,16 +3888,6 @@ input[type="button"].btn-block {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5); }
 
-.badge-Okay {
-  color: #212529;
-  background-color: #87FFE8; }
-  a.badge-Okay:hover, a.badge-Okay:focus {
-    color: #212529;
-    background-color: #54ffde; }
-  a.badge-Okay:focus, a.badge-Okay.focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(135, 255, 232, 0.5); }
-
 .badge-Rooibos_chocolat {
   color: #fff;
   background-color: #C45525; }
@@ -4112,15 +4045,6 @@ input[type="button"].btn-block {
     border-top-color: #b9bbbe; }
   .alert-dark .alert-link {
     color: #040505; }
-
-.alert-Okay {
-  color: #468579;
-  background-color: #e7fffa;
-  border-color: #ddfff9; }
-  .alert-Okay hr {
-    border-top-color: #c4fff5; }
-  .alert-Okay .alert-link {
-    color: #34645b; }
 
 .alert-Rooibos_chocolat {
   color: #662c13;
@@ -4427,17 +4351,6 @@ input[type="button"].btn-block {
     color: #fff;
     background-color: #1b1e21;
     border-color: #1b1e21; }
-
-.list-group-item-Okay {
-  color: #468579;
-  background-color: #ddfff9; }
-  .list-group-item-Okay.list-group-item-action:hover, .list-group-item-Okay.list-group-item-action:focus {
-    color: #468579;
-    background-color: #c4fff5; }
-  .list-group-item-Okay.list-group-item-action.active {
-    color: #fff;
-    background-color: #468579;
-    border-color: #468579; }
 
 .list-group-item-Rooibos_chocolat {
   color: #662c13;
@@ -5172,14 +5085,6 @@ button.bg-dark:hover,
 button.bg-dark:focus {
   background-color: #1d2124 !important; }
 
-.bg-Okay {
-  background-color: #87FFE8 !important; }
-
-a.bg-Okay:hover, a.bg-Okay:focus,
-button.bg-Okay:hover,
-button.bg-Okay:focus {
-  background-color: #54ffde !important; }
-
 .bg-Rooibos_chocolat {
   background-color: #C45525 !important; }
 
@@ -5279,9 +5184,6 @@ button.bg-Biscuit_trempé:focus {
 
 .border-dark {
   border-color: #343a40 !important; }
-
-.border-Okay {
-  border-color: #87FFE8 !important; }
 
 .border-Rooibos_chocolat {
   border-color: #C45525 !important; }
@@ -8070,12 +7972,6 @@ a.text-light:hover, a.text-light:focus {
 
 a.text-dark:hover, a.text-dark:focus {
   color: #121416 !important; }
-
-.text-Okay {
-  color: #87FFE8 !important; }
-
-a.text-Okay:hover, a.text-Okay:focus {
-  color: #3bffd9 !important; }
 
 .text-Rooibos_chocolat {
   color: #C45525 !important; }

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
 """Couleur initial sans connexion"""
-var_color = "primary"
+var_color = "Rooibos_chocolat"
 
 def base(request):
     return render(request, 'P8/base.html', {"var_color": var_color})
@@ -36,8 +36,8 @@ def connexion(request):
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
-                var_color = "warning"
-                print("Var color devient orange")
+                var_color = "Biscuit_trempé"
+                print("Var color devient {}".format(var_color))
                 print("redirection accueil")
                 return redirect('/accueil')
             else: # sinon une erreur sera affichée
@@ -51,6 +51,6 @@ def connexion(request):
 def deconnexion(request):
     global var_color
     logout(request)
-    var_color = "primary"
-    print("déconnexion : var_color devient bleu")
+    var_color = "Rooibos_chocolat"
+    print("déconnexion : var_color devient {}".format(var_color))
     return render(request, 'P8/home.html', {"var_color": var_color})
