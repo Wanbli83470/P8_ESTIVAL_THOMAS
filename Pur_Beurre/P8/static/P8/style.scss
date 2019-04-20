@@ -6,9 +6,24 @@ $theme-colors: (
   "Biscuit_trempé" : #E8A75D,
 );
 
+$titre-typo : "Open Sans", sans-serif;
+$texte-typo : "Scope One", serif;
+
+body {
+  font-family: $texte-typo;
+};
+
+h1, h2 {
+  font-family: $titre-typo;
+};
+
+$body-font-size : 2rem;
+
 $h6-font-size: 5rem;
 
+$font-family-base: 'Scope One', sans-serif;
 $font-family-sans-serif: "Open Sans", sans-serif;
 
-
 @import "node_modules/bootstrap/scss/bootstrap";
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import url('http://fonts.googleapis.com/css?family=Scope+One');

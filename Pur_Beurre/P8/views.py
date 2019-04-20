@@ -1,7 +1,11 @@
 """ imporation de render afin d'afficher le code HTML """
 from django.shortcuts import render, redirect
 from .forms import ConnexionForm
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.forms import UserCreationForm
+
 from django.urls import reverse
 
 """Couleur initial sans connexion"""
@@ -20,7 +24,23 @@ def results(request):
 def accueil(request):
     return render(request, 'P8/home.html', {"var_color": var_color})
 
-from django.contrib.auth import authenticate, login
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            print("ok compte (:")
+            form.save()
+            username = form.cleaned_data('username')
+            messages.success(request, f'Votre compte {username} est crée')
+            return redirect('/accueil')
+    else :
+        form = UserCreationForm()
+        print("Echec")
+
+    return render(request, 'P8/register.html', {'form':form})
+
+
 
 def connexion(request):
     global var_color
