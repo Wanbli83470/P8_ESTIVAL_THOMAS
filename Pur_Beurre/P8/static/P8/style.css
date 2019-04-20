@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -27,6 +28,11 @@
   --light: #f8f9fa;
   --dark: #343a40;
   --Okay: #87FFE8;
+  --Rooibos_chocolat: #C45525;
+  --Moules_frites: #345A61;
+  --Bonbon_rigolo: #86EBE6;
+  --Caramel_mou: #DE9440;
+  --Biscuit_trempé: #E8A75D;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -1371,6 +1377,86 @@ pre {
   .table-hover .table-Okay:hover > th {
     background-color: #c4fff5; }
 
+.table-Rooibos_chocolat,
+.table-Rooibos_chocolat > th,
+.table-Rooibos_chocolat > td {
+  background-color: #eecfc2; }
+.table-Rooibos_chocolat th,
+.table-Rooibos_chocolat td,
+.table-Rooibos_chocolat thead th,
+.table-Rooibos_chocolat tbody + tbody {
+  border-color: #e0a78e; }
+
+.table-hover .table-Rooibos_chocolat:hover {
+  background-color: #e8bfae; }
+  .table-hover .table-Rooibos_chocolat:hover > td,
+  .table-hover .table-Rooibos_chocolat:hover > th {
+    background-color: #e8bfae; }
+
+.table-Moules_frites,
+.table-Moules_frites > th,
+.table-Moules_frites > td {
+  background-color: #c6d1d3; }
+.table-Moules_frites th,
+.table-Moules_frites td,
+.table-Moules_frites thead th,
+.table-Moules_frites tbody + tbody {
+  border-color: #95a9ad; }
+
+.table-hover .table-Moules_frites:hover {
+  background-color: #b8c5c8; }
+  .table-hover .table-Moules_frites:hover > td,
+  .table-hover .table-Moules_frites:hover > th {
+    background-color: #b8c5c8; }
+
+.table-Bonbon_rigolo,
+.table-Bonbon_rigolo > th,
+.table-Bonbon_rigolo > td {
+  background-color: #ddf9f8; }
+.table-Bonbon_rigolo th,
+.table-Bonbon_rigolo td,
+.table-Bonbon_rigolo thead th,
+.table-Bonbon_rigolo tbody + tbody {
+  border-color: #c0f5f2; }
+
+.table-hover .table-Bonbon_rigolo:hover {
+  background-color: #c7f5f4; }
+  .table-hover .table-Bonbon_rigolo:hover > td,
+  .table-hover .table-Bonbon_rigolo:hover > th {
+    background-color: #c7f5f4; }
+
+.table-Caramel_mou,
+.table-Caramel_mou > th,
+.table-Caramel_mou > td {
+  background-color: #f6e1ca; }
+.table-Caramel_mou th,
+.table-Caramel_mou td,
+.table-Caramel_mou thead th,
+.table-Caramel_mou tbody + tbody {
+  border-color: #eec79c; }
+
+.table-hover .table-Caramel_mou:hover {
+  background-color: #f2d5b4; }
+  .table-hover .table-Caramel_mou:hover > td,
+  .table-hover .table-Caramel_mou:hover > th {
+    background-color: #f2d5b4; }
+
+.table-Biscuit_trempé,
+.table-Biscuit_trempé > th,
+.table-Biscuit_trempé > td {
+  background-color: #f9e6d2; }
+.table-Biscuit_trempé th,
+.table-Biscuit_trempé td,
+.table-Biscuit_trempé thead th,
+.table-Biscuit_trempé tbody + tbody {
+  border-color: #f3d1ab; }
+
+.table-hover .table-Biscuit_trempé:hover {
+  background-color: #f6dabc; }
+  .table-hover .table-Biscuit_trempé:hover > td,
+  .table-hover .table-Biscuit_trempé:hover > th {
+    background-color: #f6dabc; }
+
 .table-active,
 .table-active > th,
 .table-active > td {
@@ -2029,6 +2115,111 @@ fieldset:disabled a.btn {
     .btn-Okay:not(:disabled):not(.disabled):active:focus, .btn-Okay:not(:disabled):not(.disabled).active:focus, .show > .btn-Okay.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(120, 222, 203, 0.5); }
 
+.btn-Rooibos_chocolat {
+  color: #fff;
+  background-color: #C45525;
+  border-color: #C45525; }
+  .btn-Rooibos_chocolat:hover {
+    color: #fff;
+    background-color: #a4471f;
+    border-color: #99421d; }
+  .btn-Rooibos_chocolat:focus, .btn-Rooibos_chocolat.focus {
+    box-shadow: 0 0 0 0.2rem rgba(205, 111, 70, 0.5); }
+  .btn-Rooibos_chocolat.disabled, .btn-Rooibos_chocolat:disabled {
+    color: #fff;
+    background-color: #C45525;
+    border-color: #C45525; }
+  .btn-Rooibos_chocolat:not(:disabled):not(.disabled):active, .btn-Rooibos_chocolat:not(:disabled):not(.disabled).active, .show > .btn-Rooibos_chocolat.dropdown-toggle {
+    color: #fff;
+    background-color: #99421d;
+    border-color: #8e3e1b; }
+    .btn-Rooibos_chocolat:not(:disabled):not(.disabled):active:focus, .btn-Rooibos_chocolat:not(:disabled):not(.disabled).active:focus, .show > .btn-Rooibos_chocolat.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(205, 111, 70, 0.5); }
+
+.btn-Moules_frites {
+  color: #fff;
+  background-color: #345A61;
+  border-color: #345A61; }
+  .btn-Moules_frites:hover {
+    color: #fff;
+    background-color: #274348;
+    border-color: #223b40; }
+  .btn-Moules_frites:focus, .btn-Moules_frites.focus {
+    box-shadow: 0 0 0 0.2rem rgba(82, 115, 121, 0.5); }
+  .btn-Moules_frites.disabled, .btn-Moules_frites:disabled {
+    color: #fff;
+    background-color: #345A61;
+    border-color: #345A61; }
+  .btn-Moules_frites:not(:disabled):not(.disabled):active, .btn-Moules_frites:not(:disabled):not(.disabled).active, .show > .btn-Moules_frites.dropdown-toggle {
+    color: #fff;
+    background-color: #223b40;
+    border-color: #1e3337; }
+    .btn-Moules_frites:not(:disabled):not(.disabled):active:focus, .btn-Moules_frites:not(:disabled):not(.disabled).active:focus, .show > .btn-Moules_frites.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(82, 115, 121, 0.5); }
+
+.btn-Bonbon_rigolo {
+  color: #212529;
+  background-color: #86EBE6;
+  border-color: #86EBE6; }
+  .btn-Bonbon_rigolo:hover {
+    color: #212529;
+    background-color: #65e6df;
+    border-color: #5ae4dd; }
+  .btn-Bonbon_rigolo:focus, .btn-Bonbon_rigolo.focus {
+    box-shadow: 0 0 0 0.2rem rgba(119, 205, 202, 0.5); }
+  .btn-Bonbon_rigolo.disabled, .btn-Bonbon_rigolo:disabled {
+    color: #212529;
+    background-color: #86EBE6;
+    border-color: #86EBE6; }
+  .btn-Bonbon_rigolo:not(:disabled):not(.disabled):active, .btn-Bonbon_rigolo:not(:disabled):not(.disabled).active, .show > .btn-Bonbon_rigolo.dropdown-toggle {
+    color: #212529;
+    background-color: #5ae4dd;
+    border-color: #4fe2db; }
+    .btn-Bonbon_rigolo:not(:disabled):not(.disabled):active:focus, .btn-Bonbon_rigolo:not(:disabled):not(.disabled).active:focus, .show > .btn-Bonbon_rigolo.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(119, 205, 202, 0.5); }
+
+.btn-Caramel_mou {
+  color: #212529;
+  background-color: #DE9440;
+  border-color: #DE9440; }
+  .btn-Caramel_mou:hover {
+    color: #fff;
+    background-color: #d38124;
+    border-color: #c87b23; }
+  .btn-Caramel_mou:focus, .btn-Caramel_mou.focus {
+    box-shadow: 0 0 0 0.2rem rgba(194, 131, 61, 0.5); }
+  .btn-Caramel_mou.disabled, .btn-Caramel_mou:disabled {
+    color: #212529;
+    background-color: #DE9440;
+    border-color: #DE9440; }
+  .btn-Caramel_mou:not(:disabled):not(.disabled):active, .btn-Caramel_mou:not(:disabled):not(.disabled).active, .show > .btn-Caramel_mou.dropdown-toggle {
+    color: #fff;
+    background-color: #c87b23;
+    border-color: #be7421; }
+    .btn-Caramel_mou:not(:disabled):not(.disabled):active:focus, .btn-Caramel_mou:not(:disabled):not(.disabled).active:focus, .show > .btn-Caramel_mou.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(194, 131, 61, 0.5); }
+
+.btn-Biscuit_trempé {
+  color: #212529;
+  background-color: #E8A75D;
+  border-color: #E8A75D; }
+  .btn-Biscuit_trempé:hover {
+    color: #212529;
+    background-color: #e3953c;
+    border-color: #e28f30; }
+  .btn-Biscuit_trempé:focus, .btn-Biscuit_trempé.focus {
+    box-shadow: 0 0 0 0.2rem rgba(202, 148, 85, 0.5); }
+  .btn-Biscuit_trempé.disabled, .btn-Biscuit_trempé:disabled {
+    color: #212529;
+    background-color: #E8A75D;
+    border-color: #E8A75D; }
+  .btn-Biscuit_trempé:not(:disabled):not(.disabled):active, .btn-Biscuit_trempé:not(:disabled):not(.disabled).active, .show > .btn-Biscuit_trempé.dropdown-toggle {
+    color: #212529;
+    background-color: #e28f30;
+    border-color: #e08925; }
+    .btn-Biscuit_trempé:not(:disabled):not(.disabled):active:focus, .btn-Biscuit_trempé:not(:disabled):not(.disabled).active:focus, .show > .btn-Biscuit_trempé.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(202, 148, 85, 0.5); }
+
 .btn-outline-primary {
   color: #007bff;
   border-color: #007bff; }
@@ -2199,6 +2390,101 @@ fieldset:disabled a.btn {
     border-color: #87FFE8; }
     .btn-outline-Okay:not(:disabled):not(.disabled):active:focus, .btn-outline-Okay:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Okay.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(135, 255, 232, 0.5); }
+
+.btn-outline-Rooibos_chocolat {
+  color: #C45525;
+  border-color: #C45525; }
+  .btn-outline-Rooibos_chocolat:hover {
+    color: #fff;
+    background-color: #C45525;
+    border-color: #C45525; }
+  .btn-outline-Rooibos_chocolat:focus, .btn-outline-Rooibos_chocolat.focus {
+    box-shadow: 0 0 0 0.2rem rgba(196, 85, 37, 0.5); }
+  .btn-outline-Rooibos_chocolat.disabled, .btn-outline-Rooibos_chocolat:disabled {
+    color: #C45525;
+    background-color: transparent; }
+  .btn-outline-Rooibos_chocolat:not(:disabled):not(.disabled):active, .btn-outline-Rooibos_chocolat:not(:disabled):not(.disabled).active, .show > .btn-outline-Rooibos_chocolat.dropdown-toggle {
+    color: #fff;
+    background-color: #C45525;
+    border-color: #C45525; }
+    .btn-outline-Rooibos_chocolat:not(:disabled):not(.disabled):active:focus, .btn-outline-Rooibos_chocolat:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Rooibos_chocolat.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(196, 85, 37, 0.5); }
+
+.btn-outline-Moules_frites {
+  color: #345A61;
+  border-color: #345A61; }
+  .btn-outline-Moules_frites:hover {
+    color: #fff;
+    background-color: #345A61;
+    border-color: #345A61; }
+  .btn-outline-Moules_frites:focus, .btn-outline-Moules_frites.focus {
+    box-shadow: 0 0 0 0.2rem rgba(52, 90, 97, 0.5); }
+  .btn-outline-Moules_frites.disabled, .btn-outline-Moules_frites:disabled {
+    color: #345A61;
+    background-color: transparent; }
+  .btn-outline-Moules_frites:not(:disabled):not(.disabled):active, .btn-outline-Moules_frites:not(:disabled):not(.disabled).active, .show > .btn-outline-Moules_frites.dropdown-toggle {
+    color: #fff;
+    background-color: #345A61;
+    border-color: #345A61; }
+    .btn-outline-Moules_frites:not(:disabled):not(.disabled):active:focus, .btn-outline-Moules_frites:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Moules_frites.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(52, 90, 97, 0.5); }
+
+.btn-outline-Bonbon_rigolo {
+  color: #86EBE6;
+  border-color: #86EBE6; }
+  .btn-outline-Bonbon_rigolo:hover {
+    color: #212529;
+    background-color: #86EBE6;
+    border-color: #86EBE6; }
+  .btn-outline-Bonbon_rigolo:focus, .btn-outline-Bonbon_rigolo.focus {
+    box-shadow: 0 0 0 0.2rem rgba(134, 235, 230, 0.5); }
+  .btn-outline-Bonbon_rigolo.disabled, .btn-outline-Bonbon_rigolo:disabled {
+    color: #86EBE6;
+    background-color: transparent; }
+  .btn-outline-Bonbon_rigolo:not(:disabled):not(.disabled):active, .btn-outline-Bonbon_rigolo:not(:disabled):not(.disabled).active, .show > .btn-outline-Bonbon_rigolo.dropdown-toggle {
+    color: #212529;
+    background-color: #86EBE6;
+    border-color: #86EBE6; }
+    .btn-outline-Bonbon_rigolo:not(:disabled):not(.disabled):active:focus, .btn-outline-Bonbon_rigolo:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Bonbon_rigolo.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(134, 235, 230, 0.5); }
+
+.btn-outline-Caramel_mou {
+  color: #DE9440;
+  border-color: #DE9440; }
+  .btn-outline-Caramel_mou:hover {
+    color: #212529;
+    background-color: #DE9440;
+    border-color: #DE9440; }
+  .btn-outline-Caramel_mou:focus, .btn-outline-Caramel_mou.focus {
+    box-shadow: 0 0 0 0.2rem rgba(222, 148, 64, 0.5); }
+  .btn-outline-Caramel_mou.disabled, .btn-outline-Caramel_mou:disabled {
+    color: #DE9440;
+    background-color: transparent; }
+  .btn-outline-Caramel_mou:not(:disabled):not(.disabled):active, .btn-outline-Caramel_mou:not(:disabled):not(.disabled).active, .show > .btn-outline-Caramel_mou.dropdown-toggle {
+    color: #212529;
+    background-color: #DE9440;
+    border-color: #DE9440; }
+    .btn-outline-Caramel_mou:not(:disabled):not(.disabled):active:focus, .btn-outline-Caramel_mou:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Caramel_mou.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(222, 148, 64, 0.5); }
+
+.btn-outline-Biscuit_trempé {
+  color: #E8A75D;
+  border-color: #E8A75D; }
+  .btn-outline-Biscuit_trempé:hover {
+    color: #212529;
+    background-color: #E8A75D;
+    border-color: #E8A75D; }
+  .btn-outline-Biscuit_trempé:focus, .btn-outline-Biscuit_trempé.focus {
+    box-shadow: 0 0 0 0.2rem rgba(232, 167, 93, 0.5); }
+  .btn-outline-Biscuit_trempé.disabled, .btn-outline-Biscuit_trempé:disabled {
+    color: #E8A75D;
+    background-color: transparent; }
+  .btn-outline-Biscuit_trempé:not(:disabled):not(.disabled):active, .btn-outline-Biscuit_trempé:not(:disabled):not(.disabled).active, .show > .btn-outline-Biscuit_trempé.dropdown-toggle {
+    color: #212529;
+    background-color: #E8A75D;
+    border-color: #E8A75D; }
+    .btn-outline-Biscuit_trempé:not(:disabled):not(.disabled):active:focus, .btn-outline-Biscuit_trempé:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-Biscuit_trempé.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(232, 167, 93, 0.5); }
 
 .btn-link {
   font-weight: 400;
@@ -3669,6 +3955,56 @@ input[type="button"].btn-block {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(135, 255, 232, 0.5); }
 
+.badge-Rooibos_chocolat {
+  color: #fff;
+  background-color: #C45525; }
+  a.badge-Rooibos_chocolat:hover, a.badge-Rooibos_chocolat:focus {
+    color: #fff;
+    background-color: #99421d; }
+  a.badge-Rooibos_chocolat:focus, a.badge-Rooibos_chocolat.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(196, 85, 37, 0.5); }
+
+.badge-Moules_frites {
+  color: #fff;
+  background-color: #345A61; }
+  a.badge-Moules_frites:hover, a.badge-Moules_frites:focus {
+    color: #fff;
+    background-color: #223b40; }
+  a.badge-Moules_frites:focus, a.badge-Moules_frites.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(52, 90, 97, 0.5); }
+
+.badge-Bonbon_rigolo {
+  color: #212529;
+  background-color: #86EBE6; }
+  a.badge-Bonbon_rigolo:hover, a.badge-Bonbon_rigolo:focus {
+    color: #212529;
+    background-color: #5ae4dd; }
+  a.badge-Bonbon_rigolo:focus, a.badge-Bonbon_rigolo.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(134, 235, 230, 0.5); }
+
+.badge-Caramel_mou {
+  color: #212529;
+  background-color: #DE9440; }
+  a.badge-Caramel_mou:hover, a.badge-Caramel_mou:focus {
+    color: #212529;
+    background-color: #c87b23; }
+  a.badge-Caramel_mou:focus, a.badge-Caramel_mou.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(222, 148, 64, 0.5); }
+
+.badge-Biscuit_trempé {
+  color: #212529;
+  background-color: #E8A75D; }
+  a.badge-Biscuit_trempé:hover, a.badge-Biscuit_trempé:focus {
+    color: #212529;
+    background-color: #e28f30; }
+  a.badge-Biscuit_trempé:focus, a.badge-Biscuit_trempé.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(232, 167, 93, 0.5); }
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -3785,6 +4121,51 @@ input[type="button"].btn-block {
     border-top-color: #c4fff5; }
   .alert-Okay .alert-link {
     color: #34645b; }
+
+.alert-Rooibos_chocolat {
+  color: #662c13;
+  background-color: #f3ddd3;
+  border-color: #eecfc2; }
+  .alert-Rooibos_chocolat hr {
+    border-top-color: #e8bfae; }
+  .alert-Rooibos_chocolat .alert-link {
+    color: #3b190b; }
+
+.alert-Moules_frites {
+  color: #1b2f32;
+  background-color: #d6dedf;
+  border-color: #c6d1d3; }
+  .alert-Moules_frites hr {
+    border-top-color: #b8c5c8; }
+  .alert-Moules_frites .alert-link {
+    color: #091011; }
+
+.alert-Bonbon_rigolo {
+  color: #467a78;
+  background-color: #e7fbfa;
+  border-color: #ddf9f8; }
+  .alert-Bonbon_rigolo hr {
+    border-top-color: #c7f5f4; }
+  .alert-Bonbon_rigolo .alert-link {
+    color: #335a58; }
+
+.alert-Caramel_mou {
+  color: #734d21;
+  background-color: #f8ead9;
+  border-color: #f6e1ca; }
+  .alert-Caramel_mou hr {
+    border-top-color: #f2d5b4; }
+  .alert-Caramel_mou .alert-link {
+    color: #4b3216; }
+
+.alert-Biscuit_trempé {
+  color: #795730;
+  background-color: #faeddf;
+  border-color: #f9e6d2; }
+  .alert-Biscuit_trempé hr {
+    border-top-color: #f6dabc; }
+  .alert-Biscuit_trempé .alert-link {
+    color: #543d22; }
 
 @keyframes progress-bar-stripes {
   from {
@@ -4057,6 +4438,61 @@ input[type="button"].btn-block {
     color: #fff;
     background-color: #468579;
     border-color: #468579; }
+
+.list-group-item-Rooibos_chocolat {
+  color: #662c13;
+  background-color: #eecfc2; }
+  .list-group-item-Rooibos_chocolat.list-group-item-action:hover, .list-group-item-Rooibos_chocolat.list-group-item-action:focus {
+    color: #662c13;
+    background-color: #e8bfae; }
+  .list-group-item-Rooibos_chocolat.list-group-item-action.active {
+    color: #fff;
+    background-color: #662c13;
+    border-color: #662c13; }
+
+.list-group-item-Moules_frites {
+  color: #1b2f32;
+  background-color: #c6d1d3; }
+  .list-group-item-Moules_frites.list-group-item-action:hover, .list-group-item-Moules_frites.list-group-item-action:focus {
+    color: #1b2f32;
+    background-color: #b8c5c8; }
+  .list-group-item-Moules_frites.list-group-item-action.active {
+    color: #fff;
+    background-color: #1b2f32;
+    border-color: #1b2f32; }
+
+.list-group-item-Bonbon_rigolo {
+  color: #467a78;
+  background-color: #ddf9f8; }
+  .list-group-item-Bonbon_rigolo.list-group-item-action:hover, .list-group-item-Bonbon_rigolo.list-group-item-action:focus {
+    color: #467a78;
+    background-color: #c7f5f4; }
+  .list-group-item-Bonbon_rigolo.list-group-item-action.active {
+    color: #fff;
+    background-color: #467a78;
+    border-color: #467a78; }
+
+.list-group-item-Caramel_mou {
+  color: #734d21;
+  background-color: #f6e1ca; }
+  .list-group-item-Caramel_mou.list-group-item-action:hover, .list-group-item-Caramel_mou.list-group-item-action:focus {
+    color: #734d21;
+    background-color: #f2d5b4; }
+  .list-group-item-Caramel_mou.list-group-item-action.active {
+    color: #fff;
+    background-color: #734d21;
+    border-color: #734d21; }
+
+.list-group-item-Biscuit_trempé {
+  color: #795730;
+  background-color: #f9e6d2; }
+  .list-group-item-Biscuit_trempé.list-group-item-action:hover, .list-group-item-Biscuit_trempé.list-group-item-action:focus {
+    color: #795730;
+    background-color: #f6dabc; }
+  .list-group-item-Biscuit_trempé.list-group-item-action.active {
+    color: #fff;
+    background-color: #795730;
+    border-color: #795730; }
 
 .close {
   float: right;
@@ -4744,6 +5180,46 @@ button.bg-Okay:hover,
 button.bg-Okay:focus {
   background-color: #54ffde !important; }
 
+.bg-Rooibos_chocolat {
+  background-color: #C45525 !important; }
+
+a.bg-Rooibos_chocolat:hover, a.bg-Rooibos_chocolat:focus,
+button.bg-Rooibos_chocolat:hover,
+button.bg-Rooibos_chocolat:focus {
+  background-color: #99421d !important; }
+
+.bg-Moules_frites {
+  background-color: #345A61 !important; }
+
+a.bg-Moules_frites:hover, a.bg-Moules_frites:focus,
+button.bg-Moules_frites:hover,
+button.bg-Moules_frites:focus {
+  background-color: #223b40 !important; }
+
+.bg-Bonbon_rigolo {
+  background-color: #86EBE6 !important; }
+
+a.bg-Bonbon_rigolo:hover, a.bg-Bonbon_rigolo:focus,
+button.bg-Bonbon_rigolo:hover,
+button.bg-Bonbon_rigolo:focus {
+  background-color: #5ae4dd !important; }
+
+.bg-Caramel_mou {
+  background-color: #DE9440 !important; }
+
+a.bg-Caramel_mou:hover, a.bg-Caramel_mou:focus,
+button.bg-Caramel_mou:hover,
+button.bg-Caramel_mou:focus {
+  background-color: #c87b23 !important; }
+
+.bg-Biscuit_trempé {
+  background-color: #E8A75D !important; }
+
+a.bg-Biscuit_trempé:hover, a.bg-Biscuit_trempé:focus,
+button.bg-Biscuit_trempé:hover,
+button.bg-Biscuit_trempé:focus {
+  background-color: #e28f30 !important; }
+
 .bg-white {
   background-color: #fff !important; }
 
@@ -4806,6 +5282,21 @@ button.bg-Okay:focus {
 
 .border-Okay {
   border-color: #87FFE8 !important; }
+
+.border-Rooibos_chocolat {
+  border-color: #C45525 !important; }
+
+.border-Moules_frites {
+  border-color: #345A61 !important; }
+
+.border-Bonbon_rigolo {
+  border-color: #86EBE6 !important; }
+
+.border-Caramel_mou {
+  border-color: #DE9440 !important; }
+
+.border-Biscuit_trempé {
+  border-color: #E8A75D !important; }
 
 .border-white {
   border-color: #fff !important; }
@@ -7585,6 +8076,36 @@ a.text-dark:hover, a.text-dark:focus {
 
 a.text-Okay:hover, a.text-Okay:focus {
   color: #3bffd9 !important; }
+
+.text-Rooibos_chocolat {
+  color: #C45525 !important; }
+
+a.text-Rooibos_chocolat:hover, a.text-Rooibos_chocolat:focus {
+  color: #843919 !important; }
+
+.text-Moules_frites {
+  color: #345A61 !important; }
+
+a.text-Moules_frites:hover, a.text-Moules_frites:focus {
+  color: #192c2f !important; }
+
+.text-Bonbon_rigolo {
+  color: #86EBE6 !important; }
+
+a.text-Bonbon_rigolo:hover, a.text-Bonbon_rigolo:focus {
+  color: #44e0d8 !important; }
+
+.text-Caramel_mou {
+  color: #DE9440 !important; }
+
+a.text-Caramel_mou:hover, a.text-Caramel_mou:focus {
+  color: #b36d1f !important; }
+
+.text-Biscuit_trempé {
+  color: #E8A75D !important; }
+
+a.text-Biscuit_trempé:hover, a.text-Biscuit_trempé:focus {
+  color: #da821f !important; }
 
 .text-body {
   color: #212529 !important; }
