@@ -6,22 +6,24 @@
 {% endblock title%}
 
 {% block content %}
+<div class="container-fluid p-3 text-white text-center">
+    <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
+        <h1>Se connecter</h1>
 
-<h1>Se connecter</h1>
+        {% if error %}
+        <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+        {% endif %}
 
-{% if error %}
-<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
-{% endif %}
+        {% if user.is_authenticated %}
+        Vous êtes connecté, {{ user.username }} !
+        {% else %}
 
-{% if user.is_authenticated %}
-Vous êtes connecté, {{ user.username }} !
-{% else %}
-
-<form action="{% url 'connexion' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="Se connecter" class="btn btn-outline-primary">Se connecter</button>
-</form>
-{% endif %}
-
+        <form action="{% url 'connexion' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" value="Se connecter" class="btn btn-outline-light">Se connecter</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}

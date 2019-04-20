@@ -38,7 +38,7 @@ def register(request):
         form = UserCreationForm()
         print("Echec")
 
-    return render(request, 'P8/register.html', {'form':form})
+    return render(request, 'P8/register.html', {'form':form, "var_color": var_color})
 
 
 
@@ -66,7 +66,7 @@ def connexion(request):
     else:
         form = ConnexionForm()
 
-    return render(request, 'P8/connect.html', locals(), {"var_color": var_color})
+    return render(request, 'P8/connect.html', {'form':form, "var_color": var_color})
 
 def deconnexion(request):
     global var_color

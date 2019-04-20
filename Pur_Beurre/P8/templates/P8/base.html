@@ -32,7 +32,7 @@
 
       <!-- Titre -->
     <div class="col-md-2 col-sm-6 align-self-center">
-      <h1 class="text-center text-{{ var_color }}">Pur Beurre</h1>
+      <h1 class="text-center text-{{ var_color }}"><strong> Pur Beurre </strong></h1>
       {% if user.is_authenticated %}
         <h3 class="text-{{ var_color }} text-center"> Bonjour <strong>{{ user.username }} </strong>! </h3>
       {% endif %}
@@ -46,32 +46,46 @@
     </div>
 
       <!-- Icone mon compte Si connecté sinon Connexion -->
+          {% if user.is_authenticated %}
+  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+      <a href="{% url 'connexion'%}">
+        <h6 class="text-center text-{{ var_color }}">
+          <i class="fas fa-user-circle "></i>
+        </h6>
+      </a>
+   </div>
+          <a href="{% url 'connexion'%}">
+          </a>
+              {% else %}
 
   <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
 
-          {% if user.is_authenticated %}
-        <h6 class="text-center text-{{ var_color }}">
-          <i class="fas fa-user-circle "></i>
-        </h6>
-
-
-          {% else %}
         <h6 class="text-center text-{{ var_color }}">
           <i class="fas fa-sign-in-alt"><h4 class="text-{{ var_color }}">Connexion</h4></i>
         </h6>
 
-        {% endif %}
+     </a>
+   </div>
 
-      </a>
-  </div>
+  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+    <a href="{% url 'register'%}">
+
+        <h6 class="text-center text-{{ var_color }}">
+          <i class="fas fa-user-plus"><h4 class="text-{{ var_color }}">M'enregistrer</h4></i>
+        </h6>
+    </a>
+   </div>
+
+        {% endif %}
+  </divl>
 
 
 
        <!-- Icone Carottes si connecté -->
     {% if user.is_authenticated %}
   <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
-    <a href="#">
+    <a href="{% url 'results' %}">
       <h6 class=" text-{{ var_color }} text-center">
       <i class="fas fa-carrot"></i>
       </h6>
@@ -95,9 +109,10 @@
 
   </div>
 </div>
-<p> Variable var_color : "
-{{ var_color }}"
-</p>
+
+
+
+
 {% block content %}
 
 {% endblock content %}

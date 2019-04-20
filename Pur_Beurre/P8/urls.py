@@ -7,7 +7,7 @@ from . import views
 
 urlpatterns = [
     path('Legal_notice',views.Legal_notice),
-    path('results', views.results),
+    path('results', views.results, name="results"),
     path('connexion', views.connexion, name="connexion"),
     path('deconnexion', views.deconnexion, name="deconnexion"),
     path('accueil', views.accueil, name="accueil"),
