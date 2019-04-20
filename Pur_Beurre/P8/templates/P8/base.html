@@ -25,7 +25,7 @@
 
     <!-- Logo Pur Beurre -->
     <div class="col-md-1 col-sm-6 align-self-center text-center">
-      <a class="align-self-center" href="#">
+      <a class="align-self-center" href="{% url 'accueil' %}">
         <img class="align-self-center w-100" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
       </a>
     </div>
@@ -33,6 +33,9 @@
       <!-- Titre -->
     <div class="col-md-2 col-sm-6 align-self-center">
       <h1 class="text-center text-{{ var_color }}">Pur Beurre</h1>
+      {% if user.is_authenticated %}
+        <h3 class="text-{{ var_color }}"> Bonjour {{ user.username }} ! </h3>
+      {% endif %}
     </div>
 
       <!-- Search field -->
@@ -45,7 +48,7 @@
       <!-- Icone mon compte -->
 
   <div class="col-md-1 col-sm-12 align-self-center">
-      <a href="#">
+      <a href="{% url 'connexion'%}">
         <h1 class="text-center text-{{ var_color }}">
           <i class="fas fa-user-circle"></i>
         </h1>
@@ -62,14 +65,17 @@
     </a>
   </div>
 
-       <!-- Icone Deconnexion -->
+       <!-- Icone Deconnexion si connecté -->
+      {% if user.is_authenticated %}
+
   <div class="col-md-1 col-sm-12 align-self-center">
-    <a href="#">
+    <a href="{% url 'deconnexion' %}">
       <h1 class="text-center text-{{ var_color }}">
       <i class="fas fa-sign-out-alt"></i>
       </h1>
     </a>
   </div>
+      {% endif %}
 
   </div>
 </div>
@@ -97,14 +103,5 @@
   </div>
 </footer>
 
-{% if user.is_authenticated %}
-
-Bien le bonjour  {{ user.username }} !
-<a href="{% url 'deconnexion' %}">
-  <button type="button" class="btn btn-outline-danger">Se déconnecter</button>
-</a>
-
-{% else %}
-{% endif %}
 </body>
 </html>

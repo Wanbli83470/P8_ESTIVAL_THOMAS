@@ -1,5 +1,5 @@
 """ imporation de render afin d'afficher le code HTML """
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ConnexionForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -38,6 +38,8 @@ def connexion(request):
                 login(request, user)  # nous connectons l'utilisateur
                 var_color = "warning"
                 print("Var color devient orange")
+                print("redirection accueil")
+                return redirect('/accueil')
             else: # sinon une erreur sera affichée
                 print("Else !")
                 error = True
