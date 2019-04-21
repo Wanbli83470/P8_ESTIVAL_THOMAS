@@ -100,7 +100,7 @@
 
   <div class="col-md-1 col-sm-12 align-self-center">
     <a href="{% url 'deconnexion' %}">
-      <h6 class="text-center text-{{ var_color }}">
+      <h6 class="text-center text-{{ var_color }} align-self-center">
       <i class="fas fa-sign-out-alt"> <h5 class="ext-center">déconnecter</h5> </i>
       </h6>
     </a>
@@ -123,7 +123,7 @@
 
   <div class="row mt-5 p-4 bg-light text-muted border-top border-{{ var_color }}">
     <div class="col-6">
-      <a href="#">
+      <a href="{% url 'Legal_Notice' %}">
         <h3 style="text-shadow: 1px 1px 2px black;" class="text-left d-inline text-{{ var_color }}">Mentions légals</h3>
       </a>
     </div>

@@ -31,7 +31,7 @@ def register(request):
         if form.is_valid():
             print("ok compte (:")
             form.save()
-            username = form.cleaned_data('username')
+            username = form.cleaned_data['username']
             messages.success(request, f'Votre compte {username} est crée')
             return redirect('/accueil')
     else :
