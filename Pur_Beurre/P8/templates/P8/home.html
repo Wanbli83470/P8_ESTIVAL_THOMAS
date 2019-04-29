@@ -10,21 +10,31 @@
 
 <!--Partie 1 : Zone de recherche/image central-->
 
+<!--Graphic zone/pictures-->
+
 <div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
     <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">Du gras oui mais de qualité !</h1>
     <h2 style="text-shadow: 1px 1px 2px black;" class="text-center text-white">Trouver un produit de substitution pour ceux que vous consommez tous les jours</h2>
-    <br>
+    <br><br>
+
+<!--Search field-->
 
 <div class="container w-50 border border-danger">
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for...">
           <span class="input-group-btn">
+              <a href="#">
             <button class="btn btn-{{ var_color }}" type="button"><i class="fa fa-search fa-fw"></i> Chercher ! (: </button>
+              </a>
           </span>
     </div>
-</div> <hr>
-    <br>    <br>    <br>
 </div>
+
+<hr>
+
+</div>
+
+<br><br>
 
 <!--Partie 2 : Histoire de Colette et Remy-->
 
@@ -57,7 +67,7 @@
     <div class="row align-items-center">
 
         <!-- Image Colette -->
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 text-center">
             <img width="50%" src="{% static 'P8/images/colette.png' %}" alt="Image Colette" />
         </div>
 
@@ -68,8 +78,29 @@
 
     </div>
 </div>
-
+<br>
+<hr>
+<br>
 <!--Partie 4 : Contact-->
-<h2>Contactez-nous</h2>
+<h2 class="text-center">Contactez-nous</h2>
+<h3 class="text-center"> Vous pouvez nous contacter ici même : </h3>
 
+<div class="container text-center">
+    <div class="row align-items-center">
+
+        <!-- Téléphone -->
+        <div class="col-md-6 col-sm-12 col-centered">
+            <h2><i class="fas fa-tty"></i></h2>
+            <h2> 00-00-00-00-00 </h2>
+        </div>
+
+        <!--Adresse mail-->
+
+        <div class="col-md-6 col-sm-12 col-centered">
+            <h2><i class="fas fa-envelope"></i></h2>
+            <h2> <a href="#">mail@mail.com</h2> </a>
+        </div>
+
+    </div>
+</div>
 {% endblock content %}
