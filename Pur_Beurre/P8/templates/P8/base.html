@@ -24,22 +24,22 @@
   <div class="row bg-light border-bottom border-{{ var_color }}">
 
     <!-- Logo Pur Beurre -->
-    <div class="col-md-1 col-sm-6 align-self-center text-center">
-      <a class="align-self-center" href="{% url 'accueil' %}">
-        <img class="align-self-center w-75" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
+    <div class="col-md-1 col-xs-4 align-self-center text-center">
+      <a href="{% url 'accueil' %}">
+        <img width="75%" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
       </a>
     </div>
 
       <!-- Titre -->
-    <div class="col-md-2 col-sm-6 align-self-center">
-      <h1 class="text-center text-{{ var_color }}"><strong> Pur Beurre </strong></h1>
+    <div class="col-md-2 col-xs-4 align-self-center text-center">
+      <h1 class="text-{{ var_color }}"><strong> Pur Beurre </strong></h1>
       {% if user.is_authenticated %}
-        <h3 class="text-{{ var_color }} text-center"> Bonjour <strong>{{ user.username }} </strong>! </h3>
+        <h3 class="text-{{ var_color }} "> Bonjour <strong> {{ user.username }} </strong>! </h3>
       {% endif %}
     </div>
 
       <!-- Search field -->
-    <div class="col-md-3 col-sm-12 offset-md-3 align-self-center">
+    <div class="col-md-3 col-sm-6 offset-md-3 align-self-center">
       <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
@@ -47,7 +47,7 @@
 
       <!-- Icone mon compte Si connecté sinon Connexion -->
           {% if user.is_authenticated %}
-  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
         <h6 class="text-center text-{{ var_color }}">
           <i class="fas fa-user-circle "></i>
@@ -58,7 +58,7 @@
           </a>
               {% else %}
 
-  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
 
         <h6 class="text-center text-{{ var_color }}">
@@ -68,7 +68,7 @@
      </a>
    </div>
 
-  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
     <a href="{% url 'register'%}">
 
         <h6 class="text-center text-{{ var_color }}">
@@ -78,13 +78,13 @@
    </div>
 
         {% endif %}
-  </divl>
+  </div>
 
 
 
        <!-- Icone Carottes si connecté -->
     {% if user.is_authenticated %}
-  <div class="col-md-1 col-sm-12 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
     <a href="{% url 'results' %}">
       <h6 class=" text-{{ var_color }} text-center">
       <i class="fas fa-carrot"></i>
@@ -98,7 +98,7 @@
        <!-- Icone Deconnexion si connecté -->
       {% if user.is_authenticated %}
 
-  <div class="col-md-1 col-sm-12 align-self-center">
+  <div class="col-md-1 col-sm-6 align-self-center">
     <a href="{% url 'deconnexion' %}">
       <h6 class="text-center text-{{ var_color }} align-self-center">
       <i class="fas fa-sign-out-alt"> <h5 class="ext-center">déconnecter</h5> </i>

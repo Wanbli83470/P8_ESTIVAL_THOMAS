@@ -6,6 +6,8 @@
 {% endblock title%}
 
 {% block content %}
+
+
 <div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
     <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">Du gras oui mais de qualité !</h1>
     <h2 style="text-shadow: 1px 1px 2px black;" class="text-center text-white">Trouver un produit de substitution pour ceux que vous consommez tous les jours</h2>
@@ -15,10 +17,39 @@
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for...">
           <span class="input-group-btn">
-            <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Chercher ! (: </button>
+            <button class="btn btn-{{ var_color }}" type="button"><i class="fa fa-search fa-fw"></i> Chercher ! (: </button>
           </span>
     </div>
 </div> <hr>
     <br>    <br>    <br>
+</div>
+
+<div id="History" class="text-center">
+    <h2>Colette et Remy</h2>
+    <h3> De la ratatouilles aux croissants </h3>
+<br>
+
+    <blockquote class="col blockquote"> "Nous aimons tous manger, surtout en France ! Personnellement, une baguette fraîche, du bon fromage de chèvre et un bon vin rouge me suffisent
+        amplement. Comme tout le monde, je fais mes courses au supermarché. Mais petit à petit je me suis rendue compte, surtout lorsque nous avons ouvert le restaurant,
+        que je pouvais remplacer les produits aseptisés que j'avais l'habitude d'acheter par de bons produits du terroir Et souvent pour le même prix !"
+    <cite class="blockquote-footer"> Colette Tatou </cite>
+
+    </blockquote>
+
+        <hr>
+
+    <blockquote class="col blockquote">Pour ma part je me rendais déjà dans bien des magasins car j'aime beaucoup me balader, surtout dans les caves et les cuisines.
+        Je connaissais par coeur le contenu des boutiques bio (dont je raffole) ainsi que les ingrédients de tous les aliments vendus. Lorsque Colette m'a demandé si elle
+        pouvait remplacer son Nutella matinal par un aliment plus sain, je savais tout de suite où le trouver. L'idée de Pur Beurre était née !
+    <cite class="blockquote-footer"> Remy </cite>
+
+    </blockquote>
+
+</div>
+
+<div class="container">
+    <div class="row">
+
+    </div>
 </div>
 {% endblock content %}
