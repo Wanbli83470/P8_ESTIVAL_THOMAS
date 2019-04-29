@@ -1,5 +1,6 @@
-
 {% extends "P8/base.html" %}
+
+{% load static %}
 
 {% block title%}
     Accueil
@@ -7,6 +8,7 @@
 
 {% block content %}
 
+<!--Partie 1 : Zone de recherche/image central-->
 
 <div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
     <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">Du gras oui mais de qualité !</h1>
@@ -24,6 +26,8 @@
     <br>    <br>    <br>
 </div>
 
+<!--Partie 2 : Histoire de Colette et Remy-->
+
 <div id="History" class="text-center">
     <h2>Colette et Remy</h2>
     <h3> De la ratatouilles aux croissants </h3>
@@ -32,7 +36,7 @@
     <blockquote class="col blockquote"> "Nous aimons tous manger, surtout en France ! Personnellement, une baguette fraîche, du bon fromage de chèvre et un bon vin rouge me suffisent
         amplement. Comme tout le monde, je fais mes courses au supermarché. Mais petit à petit je me suis rendue compte, surtout lorsque nous avons ouvert le restaurant,
         que je pouvais remplacer les produits aseptisés que j'avais l'habitude d'acheter par de bons produits du terroir Et souvent pour le même prix !"
-    <cite class="blockquote-footer"> Colette Tatou </cite>
+    <cite class="blockquote-footer text-{{ var_color }}"> Colette Tatou </cite>
 
     </blockquote>
 
@@ -41,15 +45,31 @@
     <blockquote class="col blockquote">Pour ma part je me rendais déjà dans bien des magasins car j'aime beaucoup me balader, surtout dans les caves et les cuisines.
         Je connaissais par coeur le contenu des boutiques bio (dont je raffole) ainsi que les ingrédients de tous les aliments vendus. Lorsque Colette m'a demandé si elle
         pouvait remplacer son Nutella matinal par un aliment plus sain, je savais tout de suite où le trouver. L'idée de Pur Beurre était née !
-    <cite class="blockquote-footer"> Remy </cite>
+    <cite class="blockquote-footer text-{{ var_color }}"> Remy </cite>
 
     </blockquote>
 
 </div>
 
+<!--Partie 3 : Image Colette et Remy-->
+
 <div class="container">
-    <div class="row">
+    <div class="row align-items-center">
+
+        <!-- Image Colette -->
+        <div class="col-md-6 col-sm-12">
+            <img width="50%" src="{% static 'P8/images/colette.png' %}" alt="Image Colette" />
+        </div>
+
+        <!--Image Remy-->
+        <div class="col-md-6 col-sm-12">
+            <img width="100%" src="{% static 'P8/images/remy.jpg' %}" alt="Image Remy" />
+        </div>
 
     </div>
 </div>
+
+<!--Partie 4 : Contact-->
+<h2>Contactez-nous</h2>
+
 {% endblock content %}
