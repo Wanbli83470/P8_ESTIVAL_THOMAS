@@ -1,5 +1,7 @@
 import requests as r
 from bs4 import BeautifulSoup as b
+import unicodedata
+
 # On choisit un produit
 product = input("Entrer le nom du produit : ")
 # On paramètre la requête avec le produit pour obtenir le html correspondant
@@ -42,8 +44,16 @@ print(link_cat)
 """Etape 3 : parcourir le json de la catégorie"""
 
 # Traitement de link_cat en vue de l'url
+
+# Suppresion des caracètre accentués
 link_cat = link_cat.lower()
+
+# remplacement des espaces par un tiret
 link_cat = link_cat.replace(" ", "-")
+
+# Suppresion des accents
+link_cat = unicodedata.normalize('NFKD', link_cat).encode('ascii', 'ignore')
+link_cat = link_cat.decode('utf-8')
 print(link_cat)
 url_cat_json = "https://fr-en.openfoodfacts.org/category/{}.json".format(link_cat)
 print(url_cat_json)
