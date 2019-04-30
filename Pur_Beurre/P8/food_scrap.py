@@ -11,10 +11,19 @@ html = requête.content
 # On récupère proprement le contenu
 soup = b(html, 'html.parser')
 
+# On récupère la liste des produits
 list_products = soup.select(".products")[0]
 product_one = list_products.li
-# print(product_one)
-link_product_one = product_one.a
-print(link_product_one)
-# print("test = {}".format(test))
 
+# On récupère une url
+nb = 0
+
+link_product = str
+for link in list_products.find_all('a'):
+    while nb < 1:
+        link_product = link.get('href')
+        print(link_api)
+        nb += 1
+
+
+link_product
