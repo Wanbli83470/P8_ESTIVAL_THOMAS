@@ -20,14 +20,11 @@
 <!--Search field-->
 
 <div class="container w-50 border border-danger">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
-              <a href="#">
-            <button class="btn btn-{{ var_color }}" type="button"><i class="fa fa-search fa-fw"></i> Chercher ! (: </button>
-              </a>
-          </span>
-    </div>
+<form action="{% url 'accueil' %}" method="POST">
+    {% csrf_token %}
+    {{ search_form.as_p }}
+    <input type="submit" value="Remplacer" />
+</form>
 </div>
 
 <hr>

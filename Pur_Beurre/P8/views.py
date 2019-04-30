@@ -1,9 +1,9 @@
 """ imporation de render afin d'afficher le code HTML """
 from django.shortcuts import render, redirect
-from .forms import ConnexionForm
+from .forms import ConnexionForm, SearchForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-
+from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 
 from django.urls import reverse
@@ -18,22 +18,37 @@ def Legal_notice(request):
     return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
 
 """ Création de la vue pour les resultats """
-def results(request):
-    return render(request, 'P8/results.html', {"var_color": var_color})
+def results(request, tag):
+    food = tag
+    return render(request, 'P8/results.html', {"var_color": var_color, 'food':food})
 
 def accueil(request):
-    return render(request, 'P8/home.html', {"var_color": var_color})
+    search_form = SearchForm(request.POST)
+
+    if search_form.is_valid():
+        print("récupération saisie user en cours..")
+        search = search_form.cleaned_data["Recherche"]
+        print("test" + search)
+        return HttpResponseRedirect(reverse('results', args=(search,)))
+    else :
+        search_form = SearchForm()
+        print("On ne rentre pas dans le formulaire")
+
+    return render(request, 'P8/home.html', {"var_color": var_color, 'search_form' : search_form})
+
 
 
 def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            print("ok compte (:")
-            form.save()
-            username = form.cleaned_data['username']
-            messages.success(request, f'Votre compte {username} est crée')
-            return redirect('/accueil')
+
+    form = UserCreationForm(request.POST)
+
+    if form.is_valid():
+        print("ok compte (:")
+        form.save()
+        username = form.cleaned_data['username']
+        messages.success(request, f'Votre compte {username} est crée')
+        return redirect('/accueil')
+
     else :
         form = UserCreationForm()
         print("Echec")
