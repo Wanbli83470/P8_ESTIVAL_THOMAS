@@ -35,5 +35,15 @@ cat_requête = r.get(link_product_complete)
 cat_html = cat_requête.content
 cat_soup = b(cat_html, 'html.parser')
 
-link_cat = cat_soup.select(".tag.well_known")[0]
-print(link_cat.text)
+link_cat = cat_soup.select(".tag.well_known")[2]
+link_cat = link_cat.text
+print(link_cat)
+
+"""Etape 3 : parcourir le json de la catégorie"""
+
+# Traitement de link_cat en vue de l'url
+link_cat = link_cat.lower()
+link_cat = link_cat.replace(" ", "-")
+print(link_cat)
+url_cat_json = "https://fr-en.openfoodfacts.org/category/{}.json".format(link_cat)
+print(url_cat_json)
