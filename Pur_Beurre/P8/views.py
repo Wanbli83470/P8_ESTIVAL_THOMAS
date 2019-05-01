@@ -99,3 +99,5 @@ def deconnexion(request):
     print("redirection vers page d'accueil")
     return redirect('/accueil')
 
+def espace(request):
+    return render(request, 'P8/espace.html', {"var_color": var_color})

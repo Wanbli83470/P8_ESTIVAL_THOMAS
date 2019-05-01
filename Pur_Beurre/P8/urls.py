@@ -13,4 +13,5 @@ urlpatterns = [
     path('accueil', views.accueil, name="accueil"),
     path('', views.base, name="base"),
     path('register', views.register, name="register"),
+    path('espace', views.espace, name="espace")
 ]

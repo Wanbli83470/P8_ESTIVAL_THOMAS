@@ -46,10 +46,14 @@
       </form>
     </div>
 
-      <!-- Icone mon compte Si connecté sinon Connexion -->
-          {% if user.is_authenticated %}
-  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
-      <a href="{% url 'connexion'%}">
+<!--       SI CONNECTÉ        -->
+
+			{% if user.is_authenticated %}
+
+<!-- Icone Mon compte-->
+          
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+      <a href="{% url 'espace'%}">
         <h6 class="text-center text-{{ var_color }}">
           <i class="fas fa-user-circle "><h4 class="text-{{ var_color }}">Mon compte</h4></i>
         </h6>
@@ -58,7 +62,27 @@
           <a href="{% url 'connexion'%}">
           </a>
 
+<!-- Icone Carottes -->
+
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+    <a href="{% url 'results' 1 %}">
+      <h6 class="text-{{ var_color }} text-center">
+      	<i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
+      </h6>
+    </a>
+  </div>
+
+<!-- Icone Deconnexion -->
+  <div class="col-md-2 col-sm-6 align-self-center">
+    <a href="{% url 'deconnexion' %}">
+      <h6 class="text-center text-{{ var_color }} align-self-center">
+      <i class="fas fa-sign-out-alt"> <h4 class="text-center">déconnecter</h4> </i>
+      </h6>
+    </a>
+  </div>
           {% else %}
+
+<!--Icone Connexion-->
 
   <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
@@ -69,6 +93,8 @@
 
      </a>
    </div>
+
+<!--Icone Inscription-->
 
   <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
     <a href="{% url 'register'%}">
@@ -82,32 +108,6 @@
         {% endif %}
   </div>
 
-
-
-       <!-- Icone Carottes si connecté -->
-    {% if user.is_authenticated %}
-  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
-    <a href="{% url 'results' 1 %}">
-      <h6 class="text-{{ var_color }} text-center">
-      <i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
-      </h6>
-    </a>
-    {% else %}
-
-    {% endif %}
-  </div>
-
-       <!-- Icone Deconnexion si connecté -->
-      {% if user.is_authenticated %}
-
-  <div class="col-md-1 col-sm-6 align-self-center">
-    <a href="{% url 'deconnexion' %}">
-      <h6 class="text-center text-{{ var_color }} align-self-center">
-      <i class="fas fa-sign-out-alt"> <h4 class="text-center">déconnecter</h4> </i>
-      </h6>
-    </a>
-  </div>
-      {% endif %}
 
   </div>
 </div>

@@ -1,0 +1,15 @@
+
+{% extends "P8/base.html" %}
+
+{% block title%}
+    Mon espace
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid p-3 text-white text-center">
+    <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
+        <h1>Bienvenue sur votre espace <strong> {{ user.username }} </strong>! </h1>
+        <h2 class="font-italic">Voici votre adresse email : {{ user.email }}</h2>
+    </div>
+</div>
+{% endblock content %}
