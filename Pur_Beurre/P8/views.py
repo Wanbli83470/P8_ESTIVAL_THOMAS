@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.urls import reverse
 
+import time
 from .parse import Parsing
 from .food_scrap import get_category
 
@@ -94,5 +95,7 @@ def deconnexion(request):
     logout(request)
     var_color = "Rooibos_chocolat"
     print("déconnexion : var_color devient {}".format(var_color))
-    return render(request, 'P8/home.html', {"var_color": var_color})
+    time.sleep(2)
+    print("redirection vers page d'accueil")
     return redirect('/accueil')
+
