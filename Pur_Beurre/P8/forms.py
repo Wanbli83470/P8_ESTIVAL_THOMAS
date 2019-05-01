@@ -5,13 +5,14 @@ class ConnexionForm(forms.Form):
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
 class SearchForm(forms.Form):
-    Recherche = forms.CharField(label="Recherche", max_length=30, help_text='Saisissez simplement un nom de produit svp.')
+    Recherche = forms.CharField(label="Recherche", max_length=50, help_text='Saisissez simplement un nom de produit svp.')
 
     def clean_search(self):
         print("on test la saisie du formulaire")
-        Recherche = self.cleaned_data['Recherche']
-        print(Recherche)
-        if "pizza" in Recherche:
+        data = self.cleaned_data['Recherche']
+        print(data)
+        if "pizza" in data:
             raise forms.ValidationError("On ne veut pas entendre parler de pizza !")
-
-        return Recherche  # Ne pas oublier de renvoyer le contenu du champ traité
+        else :
+            print("champs valide")
+        return data  # Ne pas oublier de renvoyer le contenu du champ traité

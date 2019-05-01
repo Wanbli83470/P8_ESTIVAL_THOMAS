@@ -8,6 +8,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.urls import reverse
 
+from .parse import Parsing
+from .food_scrap import get_category
+
 """Couleur initial sans connexion"""
 var_color = "Rooibos_chocolat"
 
@@ -26,10 +29,13 @@ def accueil(request):
     search_form = SearchForm(request.POST)
 
     if search_form.is_valid():
-        print("récupération saisie user en cours..")
         search = search_form.cleaned_data["Recherche"]
-        print("test" + search)
-        return HttpResponseRedirect(reverse('results', args=(search,)))
+        parse = Parsing(phrase=search, nb_letter=3)
+        parse = parse.parser()
+        print(parse)
+        link_categorie = get_category(parse)
+        print(link_categorie)
+        return HttpResponseRedirect(reverse('results', args=(parse,)))
     else :
         search_form = SearchForm()
         print("On ne rentre pas dans le formulaire")
@@ -89,3 +95,4 @@ def deconnexion(request):
     var_color = "Rooibos_chocolat"
     print("déconnexion : var_color devient {}".format(var_color))
     return render(request, 'P8/home.html', {"var_color": var_color})
+    return redirect('/accueil')

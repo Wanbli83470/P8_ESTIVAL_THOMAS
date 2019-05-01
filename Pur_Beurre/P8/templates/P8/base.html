@@ -1,6 +1,7 @@
 {% load static %}
 
 <!doctype html>
+
 <html lang="fr">
   <head>
     
@@ -39,7 +40,7 @@
     </div>
 
       <!-- Search field -->
-    <div class="col-md-3 col-sm-6 offset-md-3 align-self-center">
+    <div class="col-md-2 col-sm-6 offset-md-1 align-self-center">
       <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
@@ -50,15 +51,16 @@
   <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
         <h6 class="text-center text-{{ var_color }}">
-          <i class="fas fa-user-circle "></i>
+          <i class="fas fa-user-circle "><h4 class="text-{{ var_color }}">Mon compte</h4></i>
         </h6>
       </a>
    </div>
           <a href="{% url 'connexion'%}">
           </a>
-              {% else %}
 
-  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
+          {% else %}
+
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
       <a href="{% url 'connexion'%}">
 
         <h6 class="text-center text-{{ var_color }}">
@@ -68,7 +70,7 @@
      </a>
    </div>
 
-  <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
     <a href="{% url 'register'%}">
 
         <h6 class="text-center text-{{ var_color }}">
@@ -85,9 +87,9 @@
        <!-- Icone Carottes si connecté -->
     {% if user.is_authenticated %}
   <div class="col-md-1 col-sm-6 align-self-center border-right border-{{ var_color }}">
-    <a href="{% url 'results' %}">
-      <h6 class=" text-{{ var_color }} text-center">
-      <i class="fas fa-carrot"></i>
+    <a href="{% url 'results' 1 %}">
+      <h6 class="text-{{ var_color }} text-center">
+      <i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
       </h6>
     </a>
     {% else %}
@@ -101,7 +103,7 @@
   <div class="col-md-1 col-sm-6 align-self-center">
     <a href="{% url 'deconnexion' %}">
       <h6 class="text-center text-{{ var_color }} align-self-center">
-      <i class="fas fa-sign-out-alt"> <h5 class="ext-center">déconnecter</h5> </i>
+      <i class="fas fa-sign-out-alt"> <h4 class="text-center">déconnecter</h4> </i>
       </h6>
     </a>
   </div>
