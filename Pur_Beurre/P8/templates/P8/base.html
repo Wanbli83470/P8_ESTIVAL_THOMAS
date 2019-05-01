@@ -21,8 +21,8 @@
 </head>
 <body>
 
-<div class="container-fluid">
-  <div class="row bg-light border-bottom border-{{ var_color }}">
+<div class="container-fluid h-100">
+  <div class="row h-100 bg-light border-bottom border-{{ var_color }} justify-content-center align-items-center">
 
     <!-- Logo Pur Beurre -->
     <div class="col-md-1 col-xs-4 align-self-center text-center">
@@ -52,9 +52,9 @@
 
 <!-- Icone Mon compte-->
           
-  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
       <a href="{% url 'espace'%}">
-        <h6 class="text-center text-{{ var_color }}">
+        <h6 class="text-{{ var_color }}">
           <i class="fas fa-user-circle "><h4 class="text-{{ var_color }}">Mon compte</h4></i>
         </h6>
       </a>
@@ -64,18 +64,18 @@
 
 <!-- Icone Carottes -->
 
-  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
     <a href="{% url 'results' 1 %}">
-      <h6 class="text-{{ var_color }} text-center">
+      <h6 class="text-{{ var_color }}">
       	<i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
       </h6>
     </a>
   </div>
 
 <!-- Icone Deconnexion -->
-  <div class="col-md-2 col-sm-6 align-self-center">
+  <div class="col-md-2 col-sm-6 align-self-center text-center">
     <a href="{% url 'deconnexion' %}">
-      <h6 class="text-center text-{{ var_color }} align-self-center">
+      <h6 class="text-{{ var_color }} align-self-center">
       <i class="fas fa-sign-out-alt"> <h4 class="text-center">déconnecter</h4> </i>
       </h6>
     </a>
@@ -84,10 +84,10 @@
 
 <!--Icone Connexion-->
 
-  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
       <a href="{% url 'connexion'%}">
 
-        <h6 class="text-center text-{{ var_color }}">
+        <h6 class="text-{{ var_color }}">
           <i class="fas fa-sign-in-alt"><h4 class="text-{{ var_color }}">Connexion</h4></i>
         </h6>
 
@@ -96,10 +96,10 @@
 
 <!--Icone Inscription-->
 
-  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }}">
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
     <a href="{% url 'register'%}">
 
-        <h6 class="text-center text-{{ var_color }}">
+        <h6 class="text-{{ var_color }}">
           <i class="fas fa-user-plus"><h4 class="text-{{ var_color }}">M'enregistrer</h4></i>
         </h6>
     </a>
