@@ -15,19 +15,57 @@
 
 
 <h1 class="text-center">Vous pouvez remplacer cette aliment par :</h1>
-  <div class="row text-white" >
-    <div class="col-md-4 col-sm-12 p-3 bg-dark">
-      Résultat 1
+<br>
+<div class="container-fluid">
+
+  <div class="row justify-content-center" >
+
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+
+      <div class="card bg-light text-center mx-auto" style="width: 80%;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Resultat 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
+          <h3 class="text-right bg-success d-inline rounded"> A </h3>
+        </div>
+      </div>
+
     </div>
 
-    <div class="col-md-4 col-sm-12 p-3 bg-success">
-      Résultat 2
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="card bg-light text-center mx-auto" style="width: 80%;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Resultat 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
+          <h3 class="text-right bg-success d-inline rounded"> A </h3>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-4 col-sm-12 p-3 bg-danger">
-      Résultat 3
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+
+      <div class="card bg-light text-center mx-auto" style="width: 80%;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Resultat 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
+          <h3 class="text-right bg-success d-inline rounded"> A </h3>
+        </div>
+      </div>
     </div>
+
   </div>
 
+</div>
 <!--Endblock Substitut-->
+<br>
+{% if user.is_authenticated %}
+{% else %}
+<h3 class="text-center"> <a class="text-{{var_color}}" href="#">Connectez-vous </a>  ou <a class="text-{{var_color}}" href="#">Inscrivez-vous</a>  afin d'enregistrer vos produits ! </h3>
+{% endif %}
 {% endblock content %}

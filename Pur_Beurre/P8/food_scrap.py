@@ -63,3 +63,5 @@ def get_category(choice_product) :
     url_cat_json = "https://fr-en.openfoodfacts.org/category/{}.json".format(link_cat)
     # print(url_cat_json)
     return url_cat_json
+
+test = get_category('chips')

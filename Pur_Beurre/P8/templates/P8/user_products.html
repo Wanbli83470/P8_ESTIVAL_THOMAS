@@ -2,7 +2,7 @@
 {% extends "P8/base.html" %}
 
 {% block title%}
-    Mon espace
+    Mes produits
 {% endblock title%}
 
 {% block content %}
@@ -13,15 +13,15 @@
     </div>
 </div>
 
-<div class="card-group">
+<div>Voici vos produits enregistrés :
 
 {% for products in sub %}
-    <div class="card m-3" style="width: 20%;">
-      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ products.IMG_URL }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ products.NOM }}</h5>
         <p class="card-text">{{ products.DESCRIPTION }} </p>
-        <a href="{{ products.SUBSTITUT_URL }}" class="btn btn-primary">Consulter</a>
+        <a href="{{ products.SUBSTITUT URL }}" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
 {% endfor %}

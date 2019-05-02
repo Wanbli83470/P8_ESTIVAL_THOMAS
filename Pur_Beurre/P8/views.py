@@ -5,12 +5,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
 from django.urls import reverse
 
 import time
 from .parse import Parsing
 from .food_scrap import get_category
+from .models import CATEGORIES, SUBSTITUT, PRODUIT
 
 """Couleur initial sans connexion"""
 var_color = "Rooibos_chocolat"
@@ -31,11 +32,18 @@ def accueil(request):
 
     if search_form.is_valid():
         search = search_form.cleaned_data["Recherche"]
+        # Fonction de parse
         parse = Parsing(phrase=search, nb_letter=3)
         parse = parse.parser()
         print(parse)
+        # Obtention de la catégorie
         link_categorie = get_category(parse)
+
         print(link_categorie)
+        # Enregistrement en BDD
+        cat = CATEGORIES(NOM=parse, LINK_OFF=link_categorie)
+        cat.save()
+        # Redirection vers la page results avec le nom du produit
         return HttpResponseRedirect(reverse('results', args=(parse,)))
     else :
         search_form = SearchForm()
@@ -100,4 +108,7 @@ def deconnexion(request):
     return redirect('/accueil')
 
 def espace(request):
-    return render(request, 'P8/espace.html', {"var_color": var_color})
+    print("utilisateur connecté : {}".format(request.user))
+    sub = SUBSTITUT.objects.filter(USER_FAVORITE=request.user)
+
+    return render(request, 'P8/espace.html', {"var_color": var_color, 'sub':sub})
