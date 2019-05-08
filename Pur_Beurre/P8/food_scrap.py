@@ -35,16 +35,72 @@ class Scrapping_json :
         CB_link = str(CB_link)
         print(CB_link)
         # On requête l'api du produit
-        category = r.get('https://fr.openfoodfacts.org/api/v0/produit/{}.json'.format(CB_link))
-        print(category)
+        product = r.get('https://fr.openfoodfacts.org/api/v0/produit/{}.json'.format(CB_link))
+        print(product)
         # On parcours le json pour récupérer le nom de la catégorie
-        category_json = category.json()
-        category_json = category_json['product']['categories_tags'][0]
-        category_json = category_json[3:]
+        product_json = product.json()
+        product_json = product_json['product']['categories_tags'][1]
+        product_json = product_json[3:]
+        print(product_json)
+        # On configure l'url de la catégorie JSON
+        category_json = "https://fr-en.openfoodfacts.org/category/{}/1.json".format(product_json)
         print(category_json)
+        return category_json
 
 
-# On initialise l'instance de classe
-Nutella = Scrapping_json("Nutella")
+class GetProductApi :
+
+
+    def __init__(self, nb_product = 10, requête=""):
+        self.nb_product = nb_product #Le nombre de produits
+        self.requête = r.get(requête)
+
+    def get(self):
+        # Creation list for BDD
+        url = []
+        name = []
+        ns = []
+        link_pictures = []
+
+        print("la requête retourne un code : {}".format(self.requête))
+        json_category = self.requête.json()
+        i = 0
+        for data in json_category["products"]:
+
+            # On récupère seulement les produits avec un nutriscore
+            if data["nutrition_grades_tags"] != ['not-applicable']:
+                try :
+                    url.append((data["url"]))
+                    name.append((data["product_name"]))
+                    ns.append((data["nutrition_grades_tags"]))
+                    if data["nutrition_grades_tags"] == ['not-applicable']:
+                        print("nutriscore inexistant")
+                    link_pictures.append((data["image_url"]))
+                    i = i + 1
+                    print(i)
+
+                # On intercepte les produits sans images
+                except KeyError:
+                    print("un produit sans image; n°{}".format(i))
+                    numéro = i
+                    # On supprime à la volée les produits correspondants
+                    del url[numéro]
+                    del name[numéro]
+                    del ns[numéro]
+        print(url)
+        print(name)
+        print(ns)
+        print(link_pictures)
+        print("{} élément dans la liste".format(len(link_pictures)))
+
+
+# On initialise l'instance de classe Scrapping_json
+Nutella = Scrapping_json("Volvic")
 Nutella.get_product_url()
-Nutella.get_json_categorie()
+
+liens = Nutella.get_json_categorie()
+
+# On initialise l'instance de classe GetProductApi
+substitut = GetProductApi(nb_product=10, requête=liens)
+substitut.get()
+
