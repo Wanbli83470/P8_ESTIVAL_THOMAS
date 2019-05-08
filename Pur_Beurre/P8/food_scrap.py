@@ -68,7 +68,7 @@ class GetProductApi :
         for data in json_category["products"]:
 
             # On récupère seulement les produits avec un nutriscore
-            if data["nutrition_grades_tags"] != ['not-applicable']:
+            if data["nutrition_grades_tags"] != ['not-applicable'] and data["nutrition_grades_tags"] != ['unknown'] :
                 try :
                     url.append((data["url"]))
                     name.append((data["product_name"]))
