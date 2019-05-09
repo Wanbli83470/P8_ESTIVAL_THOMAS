@@ -45,7 +45,7 @@ class Scrapping_json :
         # On configure l'url de la catégorie JSON
         category_json = "https://fr-en.openfoodfacts.org/category/{}/1.json".format(product_json)
         print(category_json)
-        return category_json
+        return category_json, product_json
 
 
 class GetProductApi :
@@ -71,13 +71,12 @@ class GetProductApi :
             if data["nutrition_grades_tags"] != ['not-applicable'] and data["nutrition_grades_tags"] != ['unknown'] :
                 try :
                     url.append((data["url"]))
+
                     name.append((data["product_name"]))
-                    ns.append((data["nutrition_grades_tags"]))
-                    if data["nutrition_grades_tags"] == ['not-applicable']:
-                        print("nutriscore inexistant")
+                    ns.append((data["nutrition_grades_tags"][0]))
                     link_pictures.append((data["image_url"]))
                     i = i + 1
-                    print(i)
+
 
                 # On intercepte les produits sans images
                 except KeyError:
@@ -89,18 +88,25 @@ class GetProductApi :
                     del ns[numéro]
         print(url)
         print(name)
-        print(ns)
         print(link_pictures)
+        print(ns)
+        # Conversion des lettres en chiffres du nutrisore
+        for n, i in enumerate(ns):
+            if i == 'a':
+                ns[n] = 1
+
+            elif i == 'b':
+                ns[n] = 2
+
+            elif i == 'c':
+                ns[n] = 3
+
+            elif i == 'd':
+
+                ns[n] = 4
+            elif i == 'e':
+                ns[n] = 5
+
+        print(ns)
         print("{} élément dans la liste".format(len(link_pictures)))
-
-
-# On initialise l'instance de classe Scrapping_json
-Nutella = Scrapping_json("Volvic")
-Nutella.get_product_url()
-
-liens = Nutella.get_json_categorie()
-
-# On initialise l'instance de classe GetProductApi
-substitut = GetProductApi(nb_product=10, requête=liens)
-substitut.get()
-
+        return url, name, ns, link_pictures

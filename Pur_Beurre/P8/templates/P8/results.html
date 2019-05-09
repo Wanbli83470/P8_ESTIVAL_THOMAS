@@ -18,48 +18,17 @@
 <br>
 <div class="container-fluid">
 
-  <div class="row justify-content-center" >
-
-    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-
-      <div class="card bg-light text-center mx-auto" style="width: 80%;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Resultat 1</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
-          <h3 class="text-right bg-success d-inline rounded"> A </h3>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-      <div class="card bg-light text-center mx-auto" style="width: 80%;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Resultat 1</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
-          <h3 class="text-right bg-success d-inline rounded"> A </h3>
-        </div>
+ {% for products in product %}
+    <div class="card m-3" style="width: 20%;">
+      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ products.NOM }}</h5>
+        <p class="card-text">{{ products.NUTRISCORE }} </p>
+        <p class="card-text">{{ products.CATEGORIE_ID }} </p>
+        <a href="{{ products.URL }}" class="btn btn-primary">Consulter</a>
       </div>
     </div>
-
-    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-
-      <div class="card bg-light text-center mx-auto" style="width: 80%;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Resultat 1</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Save  <i class="far fa-save"></i></a>
-          <h3 class="text-right bg-success d-inline rounded"> A </h3>
-        </div>
-      </div>
-    </div>
-
-  </div>
+{% endfor %}
 
 </div>
 <!--Endblock Substitut-->

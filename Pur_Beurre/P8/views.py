@@ -7,10 +7,10 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from django.db.models import Q
 import time
 from .parse import Parsing
-from .food_scrap import get_category
+from .food_scrap import Scrapping_json, GetProductApi
 from .models import CATEGORIES, SUBSTITUT, PRODUIT
 
 """Couleur initial sans connexion"""
@@ -25,24 +25,68 @@ def Legal_notice(request):
 """ Création de la vue pour les resultats """
 def results(request, tag):
     food = tag
-    return render(request, 'P8/results.html', {"var_color": var_color, 'food':food})
+    cat_key = CATEGORIES.objects.last()
+    product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE=3) | Q(NUTRISCORE=2) | Q(NUTRISCORE=1))
+
+    # product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE < 4))
+
+    return render(request, 'P8/results.html', {"var_color": var_color, 'food':food, 'product':product})
 
 def accueil(request):
     search_form = SearchForm(request.POST)
 
     if search_form.is_valid():
         search = search_form.cleaned_data["Recherche"]
+
         # Fonction de parse
         parse = Parsing(phrase=search, nb_letter=3)
         parse = parse.parser()
         print(parse)
-        # Obtention de la catégorie
-        link_categorie = get_category(parse)
 
-        print(link_categorie)
-        # Enregistrement en BDD
-        cat = CATEGORIES(NOM=parse, LINK_OFF=link_categorie)
+
+        """" Obtention de la catégorie"""
+
+        # On initialise l'instance de classe Scrapping_json
+        products = Scrapping_json(parse)
+
+        # On récupère le liens du produit
+        products.get_product_url()
+
+        # On récupère le liens de la catégorie json avec l'api
+        link_categorie = products.get_json_categorie()
+        name_categorie = link_categorie[1]
+        link_categorie = link_categorie[0]
+
+        # On initialise l'instance de classe GetProductApi
+        substitut = GetProductApi(nb_product=10, requête=link_categorie)
+        substitut = substitut.get()
+        substitut_url = substitut[0]
+        substitut_name = substitut[1]
+        substitut_nutriscore = substitut[2]
+        substitut_pictures = substitut[3]
+
+        # Enregistrement en BDD de la catégorie
+        cat = CATEGORIES(NOM=name_categorie, LINK_OFF=link_categorie)
         cat.save()
+
+        # Enregistrement en BDD des produits
+
+        # 1 on compte le nombre de produits
+        nb_products = len(substitut_pictures)
+        print("on propose : {} produits".format(nb_products))
+
+        # 2 On Récupère la clef étrangère de catégorie
+        key_cat = CATEGORIES.objects.last()
+
+        # 3 On boucle pour insérer les produits dans la BDD
+        i = 0
+        while i < nb_products:
+            products = PRODUIT(NOM=substitut_name[i], PRODUIT_URL=substitut_url[i], STORE="Le store", NUTRISCORE=substitut_nutriscore[i], CATEGORIE_ID=key_cat, IMG_URL=substitut_pictures[i])
+            products.save()
+            i = i + 1
+            print("i vaut : {}".format(i))
+
+
         # Redirection vers la page results avec le nom du produit
         return HttpResponseRedirect(reverse('results', args=(parse,)))
     else :
