@@ -26,7 +26,7 @@ def Legal_notice(request):
 def results(request, tag):
     food = tag
     cat_key = CATEGORIES.objects.last()
-    product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE=3) | Q(NUTRISCORE=2) | Q(NUTRISCORE=1))
+    product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
     # product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE < 4))
 
