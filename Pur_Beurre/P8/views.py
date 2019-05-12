@@ -67,7 +67,18 @@ def accueil(request):
         substitut_pictures = substitut[3]
 
         # Enregistrement en BDD de la catégorie si inexistante
-        test_cat = CATEGORIES.objects.get_or_create(NOM=name_categorie, LINK_OFF=link_categorie)
+        cat = CATEGORIES.objects.get_or_create(NOM=name_categorie, LINK_OFF=link_categorie)
+        test_cat = False
+
+        if True in cat:
+            print("Catégorie Crée")
+            test_cat = True
+            print(test_cat)
+        else:
+            print("Catégorie Existante")
+            test_cat = False
+            print(test_cat)
+
         # Enregistrement en BDD des produits
 
         # 1 on compte le nombre de produits
@@ -79,11 +90,13 @@ def accueil(request):
 
         # 3 On boucle pour insérer les produits dans la BDD
         i = 0
-        while i < nb_products:
-            products = PRODUIT(NOM=substitut_name[i], PRODUIT_URL=substitut_url[i], STORE="Le store", NUTRISCORE=substitut_nutriscore[i], CATEGORIE_ID=key_cat, IMG_URL=substitut_pictures[i])
-            products.save()
-            i = i + 1
-            print("i vaut : {}".format(i))
+
+        if test_cat == True :
+            while i < nb_products:
+                products = PRODUIT(NOM=substitut_name[i], PRODUIT_URL=substitut_url[i], STORE="Le store", NUTRISCORE=substitut_nutriscore[i], CATEGORIE_ID=key_cat, IMG_URL=substitut_pictures[i])
+                products.save()
+                i = i + 1
+                print("i vaut : {}".format(i))
 
 
         # Redirection vers la page results avec le nom du produit
