@@ -23,14 +23,15 @@ def Legal_notice(request):
     return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
 
 """ Création de la vue pour les resultats """
-def results(request, tag):
-    food = tag
-    cat_key = CATEGORIES.objects.last()
+def results(request, parse, name_categorie):
+    parse = parse
+    name_categorie = name_categorie
+    cat_key = CATEGORIES.objects.get(NOM=name_categorie)
     product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
     # product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE < 4))
 
-    return render(request, 'P8/results.html', {"var_color": var_color, 'food':food, 'product':product})
+    return render(request, 'P8/results.html', {"var_color": var_color, 'parse':parse, 'product':product})
 
 def accueil(request):
     search_form = SearchForm(request.POST)
@@ -65,10 +66,8 @@ def accueil(request):
         substitut_nutriscore = substitut[2]
         substitut_pictures = substitut[3]
 
-        # Enregistrement en BDD de la catégorie
-        cat = CATEGORIES(NOM=name_categorie, LINK_OFF=link_categorie)
-        cat.save()
-
+        # Enregistrement en BDD de la catégorie si inexistante
+        test_cat = CATEGORIES.objects.get_or_create(NOM=name_categorie, LINK_OFF=link_categorie)
         # Enregistrement en BDD des produits
 
         # 1 on compte le nombre de produits
@@ -76,7 +75,7 @@ def accueil(request):
         print("on propose : {} produits".format(nb_products))
 
         # 2 On Récupère la clef étrangère de catégorie
-        key_cat = CATEGORIES.objects.last()
+        key_cat = CATEGORIES.objects.get(NOM=name_categorie)
 
         # 3 On boucle pour insérer les produits dans la BDD
         i = 0
@@ -88,7 +87,7 @@ def accueil(request):
 
 
         # Redirection vers la page results avec le nom du produit
-        return HttpResponseRedirect(reverse('results', args=(parse,)))
+        return HttpResponseRedirect(reverse('results', args=(parse, name_categorie)))
     else :
         search_form = SearchForm()
         print("On ne rentre pas dans le formulaire")

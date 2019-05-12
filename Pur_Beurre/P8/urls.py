@@ -7,7 +7,7 @@ from . import views
 
 urlpatterns = [
     path('Legal_notice',views.Legal_notice, name="Legal_Notice"),
-    path('results/<str:tag>', views.results, name="results"),
+    path('results/<str:parse>/<str:name_categorie>/', views.results, name="results"),
     path('connexion', views.connexion, name="connexion"),
     path('deconnexion', views.deconnexion, name="deconnexion"),
     path('accueil', views.accueil, name="accueil"),
