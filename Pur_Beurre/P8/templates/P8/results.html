@@ -17,19 +17,22 @@
 <h1 class="text-center">Vous pouvez remplacer cette aliment par :</h1>
 <br>
 <div class="container-fluid">
-
+<div class="card-columns">
  {% for products in product %}
-    <div class="card m-3" style="width: 20%;">
-      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">
+
+    <div class="card border-primary">
+      <img class="card-img-top w-25 img-responsive mx-auto d-block" src="{{ products.IMG_URL }}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{ products.NOM }}</h5>
-        <p class="card-text">{{ products.NUTRISCORE }} </p>
-        <p class="card-text">{{ products.CATEGORIE_ID }} </p>
-        <a href="{{ products.URL }}" class="btn btn-primary">Consulter</a>
+        <h5 class="card-title bg-light ">{{ products.NOM }}</h5>
+        <p class="card-text bg-light">{{ products.NUTRISCORE }} </p>
+
+      <a href="#" class="btn btn-primary">Save</a>
+      <a href="{{ products.URL }}" class="btn btn-primary float-right w-50">Consulter</a>
       </div>
     </div>
-{% endfor %}
 
+{% endfor %}
+</div>
 </div>
 <!--Endblock Substitut-->
 <br>
