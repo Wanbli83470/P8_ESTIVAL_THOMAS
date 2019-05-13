@@ -1,5 +1,5 @@
 """ imporation de render afin d'afficher le code HTML """
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ConnexionForm, SearchForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -107,7 +107,9 @@ def accueil(request):
 
     return render(request, 'P8/home.html', {"var_color": var_color, 'search_form' : search_form})
 
-
+def details(request, id):
+    food = PRODUIT.objects.get(id=id)
+    return render(request, 'P8/food_details.html', {"var_color": var_color, "food":food})
 
 def register(request):
 

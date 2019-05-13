@@ -7,28 +7,39 @@
 
 {% block content %}
 <!--Aliments à remplacer-->
-<div height="200px" class="container-fluid bg-dark text-white text-center">
-  <h2>Aliments : {{ parse }}</h2>
+<div height="200px" class="container-fluid bg-dark text-white text-center p-3">
+  <h2>Je veux remplacer  <strong>{{ parse }} </strong> </h2>
+    <hr class="bg-light border border-light">
+    <h1 class="text-center">Nos propositions :</h1>
 </div>
 
 <!--Substitut-->
 
 
-<h1 class="text-center">Vous pouvez remplacer cette aliment par :</h1>
+
 <br>
 <div class="container-fluid">
 <div class="card-columns">
  {% for products in product %}
 
-    <div class="card border-primary">
-      <img class="card-img-top w-25 img-responsive mx-auto d-block" src="{{ products.IMG_URL }}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title bg-light ">{{ products.NOM }}</h5>
-        <p class="card-text bg-light">{{ products.NUTRISCORE }} </p>
+    <div class="card border-{{ var_color }} bg-food m-2 p-2">
+      <img class="card-img-top w-25 img-responsive mx-auto d-block rounded" src="{{ products.IMG_URL }}" alt="Card image cap">
+        <hr class="bg-{{ var_color }} border border-{{ var_color }}">
+        <div class="card-body">
+        <h5 class="card-title">{{ products.NOM }}</h5>
+        <p class="card-text">Nutriscore : {{ products.NUTRISCORE }} </p>
+    <hr class="bg-{{ var_color }} border-{{ var_color }}">
 
-      <a href="#" class="btn btn-primary">Save</a>
-      <a href="{{ products.URL }}" class="btn btn-primary float-right w-50">Consulter</a>
+
+        {% if user.is_authenticated %}
+      <a href="#" class="btn btn-{{ var_color }} text-white"><strong> Save  </strong></a>
+      <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"> <strong> Consulter  </strong></a>
       </div>
+        {% else %}
+
+      <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"><strong> Consulter  </strong></a>
+      </div>
+        {% endif %}
     </div>
 
 {% endfor %}

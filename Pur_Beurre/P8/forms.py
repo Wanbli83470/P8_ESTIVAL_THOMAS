@@ -5,7 +5,7 @@ class ConnexionForm(forms.Form):
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
 class SearchForm(forms.Form):
-    Recherche = forms.CharField(label="Recherche", max_length=50, help_text='Saisissez simplement un nom de produit svp.')
+    Recherche = forms.CharField(max_length=50)
 
     def clean_search(self):
         print("on test la saisie du formulaire")

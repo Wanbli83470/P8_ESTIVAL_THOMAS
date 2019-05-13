@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<!--Partie 1 : Zone de recherche/image central-->
+{% load crispy_forms_tags %}
 
 <!--Graphic zone/pictures-->
 
@@ -19,11 +19,11 @@
 
 <!--Search field-->
 
-<div class="container w-50 border border-danger">
-<form action="{% url 'accueil' %}" method="POST">
+<div class="container">
+<form style="opacity: 1;" action="{% url 'accueil' %}" method="POST">
     {% csrf_token %}
-    {{ search_form.as_p }}
-    <input type="submit" value="Remplacer" />
+    {{ search_form|crispy }}
+    <button type="submit" class="btn btn-{{ var_color }} mx-auto d-block">Remplacer</button>
 </form>
 </div>
 
