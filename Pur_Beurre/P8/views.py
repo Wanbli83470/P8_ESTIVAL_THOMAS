@@ -10,28 +10,29 @@ from django.urls import reverse
 from django.db.models import Q
 import time
 from .parse import Parsing
-from .food_scrap import Scrapping_json, GetProductApi
+from .food_scrap import ScrappingJson, GetProductApi
 from .models import CATEGORIES, SUBSTITUT, PRODUIT
 
-"""Couleur initial sans connexion"""
+"""Color without connection"""
 var_color = "Rooibos_chocolat"
+
 
 def base(request):
     return render(request, 'P8/base.html', {"var_color": var_color})
-""" Création de la vue pour les mentions légales """
+
+
 def Legal_notice(request):
     return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
 
-""" Création de la vue pour les resultats """
+
 def results(request, parse, name_categorie):
     parse = parse
     name_categorie = name_categorie
     cat_key = CATEGORIES.objects.get(NOM=name_categorie)
     product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
-    # product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE < 4))
-
     return render(request, 'P8/results.html', {"var_color": var_color, 'parse':parse, 'product':product})
+
 
 def accueil(request):
     search_form = SearchForm(request.POST)
@@ -48,7 +49,7 @@ def accueil(request):
         """" Obtention de la catégorie"""
 
         # On initialise l'instance de classe Scrapping_json
-        products = Scrapping_json(parse)
+        products = ScrappingJson(parse)
 
         # On récupère le liens du produit
         products.get_product_url()
@@ -107,9 +108,11 @@ def accueil(request):
 
     return render(request, 'P8/home.html', {"var_color": var_color, 'search_form' : search_form})
 
+
 def details(request, id):
     food = PRODUIT.objects.get(id=id)
     return render(request, 'P8/food_details.html', {"var_color": var_color, "food":food})
+
 
 def register(request):
 
@@ -127,7 +130,6 @@ def register(request):
         print("Echec")
 
     return render(request, 'P8/register.html', {'form':form, "var_color": var_color})
-
 
 
 def connexion(request):
@@ -156,6 +158,7 @@ def connexion(request):
 
     return render(request, 'P8/connect.html', {'form':form, "var_color": var_color})
 
+
 def deconnexion(request):
     global var_color
     logout(request)
@@ -164,6 +167,7 @@ def deconnexion(request):
     time.sleep(2)
     print("redirection vers page d'accueil")
     return redirect('/accueil')
+
 
 def espace(request):
     print("utilisateur connecté : {}".format(request.user))

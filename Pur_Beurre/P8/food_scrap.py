@@ -5,7 +5,7 @@ import re
 import json
 
 
-class Scrapping_json :
+class ScrappingJson :
     def __init__(self, product):
         self.product = product
 
@@ -29,7 +29,7 @@ class Scrapping_json :
         return self.link_product
 
     def get_json_categorie(self):
-        # On récupère le code barre du produit
+        # get the product barcode
         print(self.link_product)
         CB_link = re.findall("([0-9]+)", self.link_product)
         CB_link = str(CB_link)
@@ -37,12 +37,12 @@ class Scrapping_json :
         # On requête l'api du produit
         product = r.get('https://fr.openfoodfacts.org/api/v0/produit/{}.json'.format(CB_link))
         print(product)
-        # On parcours le json pour récupérer le nom de la catégorie
+        # We run the json to get the name of the category
         product_json = product.json()
         product_json = product_json['product']['categories_tags'][1]
         product_json = product_json[3:]
         print(product_json)
-        # On configure l'url de la catégorie JSON
+        # Configuring the url category in json
         category_json = "https://fr-en.openfoodfacts.org/category/{}/1.json".format(product_json)
         print(category_json)
         return category_json, product_json
@@ -67,7 +67,8 @@ class GetProductApi :
         i = 0
         for data in json_category["products"]:
 
-            # On récupère seulement les produits avec un nutriscore
+            # Filter produced with nutriscore
+
             if data["nutrition_grades_tags"] != ['not-applicable'] and data["nutrition_grades_tags"] != ['unknown'] :
                 try :
                     url.append((data["url"]))
@@ -78,19 +79,23 @@ class GetProductApi :
                     i = i + 1
 
 
-                # On intercepte les produits sans images
+                #
+                # Deleting products without images
+
                 except KeyError:
                     print("un produit sans image; n°{}".format(i))
                     numéro = i
-                    # On supprime à la volée les produits correspondants
+
                     del url[numéro]
                     del name[numéro]
                     del ns[numéro]
+
         print(url)
         print(name)
         print(link_pictures)
         print(ns)
-        # Conversion des lettres en chiffres du nutrisore
+
+        # Convert number to letters
         for n, i in enumerate(ns):
             if i == 'a':
                 ns[n] = 1
