@@ -15,4 +15,5 @@ urlpatterns = [
     path('register', views.register, name="register"),
     path('espace', views.espace, name="espace"),
     path('details/<int:id>/', views.details, name="details"),
+    path('save/<int:pk>/', views.save, name="save"),
 ]

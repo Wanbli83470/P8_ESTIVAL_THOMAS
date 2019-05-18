@@ -34,7 +34,7 @@
 
 
         {% if user.is_authenticated %}
-      <a href="#" class="btn btn-{{ var_color }} text-white"><strong> Save  </strong></a>
+      <a href="{% url 'save' products.id %}" class="btn btn-{{ var_color }} text-white"><strong id="save"> Save  </strong></a>
       <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"> <strong> Consulter  </strong></a>
       </div>
         {% else %}

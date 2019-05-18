@@ -110,9 +110,16 @@ def accueil(request):
 
 
 def details(request, id):
+
     food = PRODUIT.objects.get(id=id)
     return render(request, 'P8/food_details.html', {"var_color": var_color, "food":food})
 
+def save(request, pk):
+    food = PRODUIT.objects.get(pk=pk)
+    save_product = SUBSTITUT(PRODUIT_ID=food, USER_FAVORITE=request.user)
+    print(save_product)
+    save_product.save()
+    return render(request, 'P8/results.html', {"var_color": var_color})
 
 def register(request):
 
