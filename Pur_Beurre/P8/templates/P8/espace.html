@@ -13,18 +13,22 @@
     </div>
 </div>
 
-<div class="card-group">
+<!--<div class="card-group">-->
+
+<!--{% for products in sub %}-->
+<!--    <div class="card m-3" style="width: 20%;">-->
+<!--      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">{{ products.NOM }}</h5>-->
+<!--        <p class="card-text">{{ products.DESCRIPTION }} </p>-->
+<!--        <a href="{{ products.SUBSTITUT_URL }}" class="btn btn-primary">Consulter</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--{% endfor %}-->
 
 {% for products in sub %}
-    <div class="card m-3" style="width: 20%;">
-      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{ products.NOM }}</h5>
-        <p class="card-text">{{ products.DESCRIPTION }} </p>
-        <a href="{{ products.SUBSTITUT_URL }}" class="btn btn-primary">Consulter</a>
-      </div>
-    </div>
-{% endfor %}
 
+    <p>{{ products.PRODUIT_ID }}</p>
+{% endfor %}
 </div>
 {% endblock content %}

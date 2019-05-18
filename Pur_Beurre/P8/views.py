@@ -170,7 +170,12 @@ def deconnexion(request):
 
 
 def espace(request):
+    # On utilise request pour voir l'utilisateur connecté
     print("utilisateur connecté : {}".format(request.user))
+    # On recueil les substituts de cet utilisateur
     sub = SUBSTITUT.objects.filter(USER_FAVORITE=request.user)
-
+    # On récupère les identifiants produits dans une liste
+    for s in sub:
+        print(s.PRODUIT_ID)
+        print(type(s.PRODUIT_ID))
     return render(request, 'P8/espace.html', {"var_color": var_color, 'sub':sub})

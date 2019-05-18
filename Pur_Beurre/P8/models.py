@@ -26,15 +26,11 @@ class PRODUIT(models.Model):
     CATEGORIE_ID = models.ForeignKey(CATEGORIES, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Produit : {}, nutriscore : {}".format(self.NOM, self.NUTRISCORE)
+        return str(self.id)
 
 class SUBSTITUT(models.Model):
-    NOM = models.CharField(max_length=200)
-    STORE = models.CharField(max_length=50)
-    SUBSTITUT_URL = models.CharField(max_length=200)
-    IMG_URL = models.CharField(max_length=100)
-    DESCRIPTION = models.TextField()
+    PRODUIT_ID = models.ForeignKey(PRODUIT, on_delete=models.CASCADE)
     USER_FAVORITE = models.ForeignKey(User, on_delete=ChildProcessError)
 
     def __str__(self):
-        return "Substitut : {}, enregistré par : {}".format(self.NOM, self.USER_FAVORITE)
+        return "enregistré par : {}".format(self.USER_FAVORITE)
