@@ -116,10 +116,9 @@ def details(request, id):
 
 def save(request, pk):
     food = PRODUIT.objects.get(pk=pk)
-    save_product = SUBSTITUT(PRODUIT_ID=food, USER_FAVORITE=request.user)
-    print(save_product)
-    save_product.save()
-    return render(request, 'P8/results.html', {"var_color": var_color})
+    test_save_product = SUBSTITUT.objects.get_or_create(PRODUIT_ID=food, USER_FAVORITE=request.user)
+    print(test_save_product)
+    return render(request, 'P8/home.html', {"var_color": var_color})
 
 def register(request):
 
