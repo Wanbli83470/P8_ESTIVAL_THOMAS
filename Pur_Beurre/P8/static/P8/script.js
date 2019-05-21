@@ -1,8 +1,10 @@
-
-
+$(document).ready(function(){
     alert("Une alerte");
     console.log("Une alerte");
 
-    $("#save").mouseenter(function(){
-        alert("La detection de save fonctionne");
+    $("#footer").click(function(){
+        alert("La detection Jquery fonctionne");
     });
+});
+
+

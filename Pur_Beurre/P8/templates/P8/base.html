@@ -4,7 +4,11 @@
 
 <html lang="fr">
   <head>
-    
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
   <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <!-- Required meta tags -->
@@ -67,7 +71,7 @@
 <!-- Icon carrots -->
 
   <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
-    <a href="{% url 'espace' %}">
+    <a href="{% url 'user_products' %}">
       <h6 class="text-{{ var_color }}">
       	<i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
       </h6>
@@ -126,7 +130,7 @@
 
      <!-- FOOTER -->
 
-<footer class="fixed-bottom">
+<footer id="footer" class="fixed-bottom">
 
   <div class="row mt-5 p-4 bg-light text-muted border-top border-{{ var_color }}">
     <div class="col-6">

@@ -6,25 +6,14 @@
 {% endblock title%}
 
 {% block content %}
-<div class="container-fluid p-3 text-white text-center">
-    <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
-        <h1>Bienvenue sur votre espace <strong> {{ user.username }} </strong>! </h1>
-        <h2 class="font-italic">Voici votre adresse email : {{ user.email }}</h2>
-    </div>
-</div>
 
-<div>Voici vos produits enregistrés :
 
 {% for products in sub %}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{ products.IMG_URL }}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{ products.NOM }}</h5>
-        <p class="card-text">{{ products.DESCRIPTION }} </p>
-        <a href="{{ products.SUBSTITUT URL }}" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+    <p>{{ products.PRODUIT_ID }}</p>
+{% empty %}
+    <p>Vous n'avez pas encore enregistrer de produits</p>
 {% endfor %}
+
 
 </div>
 {% endblock content %}
