@@ -92,7 +92,7 @@ def accueil(request):
         # 3 On boucle pour insérer les produits dans la BDD
         i = 0
 
-        if test_cat == True :
+        if test_cat == True:
             while i < nb_products:
                 products = PRODUIT(NOM=substitut_name[i], PRODUIT_URL=substitut_url[i], STORE="Le store", NUTRISCORE=substitut_nutriscore[i], CATEGORIE_ID=key_cat, IMG_URL=substitut_pictures[i])
                 products.save()
@@ -102,7 +102,7 @@ def accueil(request):
 
         # Redirection vers la page results avec le nom du produit
         return HttpResponseRedirect(reverse('results', args=(parse, name_categorie)))
-    else :
+    else:
         search_form = SearchForm()
         print("On ne rentre pas dans le formulaire")
 
@@ -177,6 +177,7 @@ def deconnexion(request):
 
 def espace(request):
     return render(request, 'P8/espace.html', {"var_color": var_color})
+
 
 def user_products(request):
     # On utilise request pour voir l'utilisateur connecté

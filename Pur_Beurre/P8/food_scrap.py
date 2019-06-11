@@ -5,7 +5,7 @@ import re
 import json
 
 
-class ScrappingJson :
+class ScrappingJson:
     def __init__(self, product):
         self.product = product
 
@@ -48,9 +48,7 @@ class ScrappingJson :
         return category_json, product_json
 
 
-class GetProductApi :
-
-
+class GetProductApi:
     def __init__(self, nb_product = 10, requête=""):
         self.nb_product = nb_product #Le nombre de produits
         self.requête = r.get(requête)

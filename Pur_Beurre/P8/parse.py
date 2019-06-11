@@ -1,6 +1,7 @@
 """Import file contain the stop words"""
 from .stop_words import WORDS_FRENCH
 
+
 class Parsing:
     """The class makes it possible to parse in the list of words the question of the user
     A constructor is used by allowing the user to indicate the number of letters"""
