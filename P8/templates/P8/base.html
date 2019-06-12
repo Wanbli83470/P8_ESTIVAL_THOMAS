@@ -1,0 +1,149 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="fr">
+  <head>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'P8/style.css' %}">
+    <script type="text/javascript" src="{% static 'P8/script.js' %}"></script>
+    <title>{% block title%}
+            Base.html
+           {% endblock title%}</title>
+
+    <!--JQUERY-->
+</head>
+<body>
+
+<div class="container-fluid h-100">
+  <div class="row h-100 bg-light border-bottom border-{{ var_color }} justify-content-center align-items-center">
+
+    <!-- Logo Pur Beurre -->
+    <div class="col-md-1 col-xs-4 align-self-center text-center">
+      <a href="{% url 'accueil' %}">
+        <img width="75%" src="{% static 'P8/images/logo.png' %}" alt="Mon image" />
+      </a>
+    </div>
+
+      <!-- Title -->
+    <div class="col-md-2 col-xs-4 align-self-center text-center">
+      <h1 class="text-{{ var_color }}"><strong> Pur Beurre </strong></h1>
+      {% if user.is_authenticated %}
+        <h3 class="text-{{ var_color }} "> Bonjour <strong> {{ user.username }} </strong>! </h3>
+      {% endif %}
+    </div>
+
+      <!-- Search field -->
+    <div class="col-md-2 col-sm-6 offset-md-1 align-self-center">
+      <form>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+
+<!--       IF CONNECTED        -->
+
+			{% if user.is_authenticated %}
+
+<!-- Icon Mon compte-->
+          
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
+      <a href="{% url 'espace'%}">
+        <h6 class="text-{{ var_color }}">
+          <i class="fas fa-user-circle "><h4 class="text-{{ var_color }}">Mon compte</h4></i>
+        </h6>
+      </a>
+   </div>
+          <a href="{% url 'connexion'%}">
+          </a>
+
+<!-- Icon carrots -->
+
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
+    <a href="{% url 'user_products' %}">
+      <h6 class="text-{{ var_color }}">
+      	<i class="fas fa-carrot"><h4 class="text-{{ var_color }}">produits</h4></i>
+      </h6>
+    </a>
+  </div>
+
+<!-- Icon Log out -->
+
+  <div class="col-md-2 col-sm-6 align-self-center text-center">
+    <a href="{% url 'deconnexion' %}">
+      <h6 class="text-{{ var_color }} align-self-center">
+      <i class="fas fa-sign-out-alt"> <h4 class="text-center">déconnecter</h4> </i>
+      </h6>
+    </a>
+  </div>
+          {% else %}
+
+<!--Icon connection-->
+
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
+      <a href="{% url 'connexion'%}">
+
+        <h6 class="text-{{ var_color }}">
+          <i class="fas fa-sign-in-alt"><h4 class="text-{{ var_color }}">Connexion</h4></i>
+        </h6>
+
+     </a>
+   </div>
+
+<!--Icon registration-->
+
+  <div class="col-md-2 col-sm-6 align-self-center border-right border-{{ var_color }} text-center">
+    <a href="{% url 'register'%}">
+
+        <h6 class="text-{{ var_color }}">
+          <i class="fas fa-user-plus"><h4 class="text-{{ var_color }}">M'enregistrer</h4></i>
+        </h6>
+    </a>
+   </div>
+
+        {% endif %}
+  </div>
+
+
+  </div>
+</div>
+
+
+
+
+{% block content %}
+
+{% endblock content %}
+
+<br><br><br><br><br><br>
+
+     <!-- FOOTER -->
+
+<footer id="footer" class="fixed-bottom">
+
+  <div class="row mt-5 p-4 bg-light text-muted border-top border-{{ var_color }}">
+    <div class="col-6">
+      <a href="{% url 'Legal_Notice' %}">
+        <h3 style="text-shadow: 1px 1px 2px black;" class="text-left d-inline text-{{ var_color }}">Mentions légals</h3>
+      </a>
+    </div>
+    <div class="col-6">
+        <h3 style="text-shadow: 1px 1px 2px black;" class="text-right text-{{ var_color }}">Contact</h3>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

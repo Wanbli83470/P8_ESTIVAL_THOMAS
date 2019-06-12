@@ -1,0 +1,19 @@
+
+{% extends "P8/base.html" %}
+
+{% block title%}
+    Mes produits
+{% endblock title%}
+
+{% block content %}
+
+
+{% for products in sub %}
+    <p>{{ products.PRODUIT_ID }}</p>
+{% empty %}
+    <p>Vous n'avez pas encore enregistrer de produits</p>
+{% endfor %}
+
+
+</div>
+{% endblock content %}

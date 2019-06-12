@@ -1,0 +1,56 @@
+
+{% extends "P8/base.html" %}
+
+{% block title%}
+    Results
+{% endblock title%}
+
+{% block content %}
+
+<!--Product to replace-->
+
+<div height="200px" class="container-fluid bg-dark text-white text-center p-3">
+  <h2>Je veux remplacer  <strong>{{ parse }} </strong> </h2>
+    <hr class="bg-light border border-light">
+    <h1 class="text-center">Nos propositions :</h1>
+</div>
+
+<!--food substitute-->
+
+
+
+<br>
+<div class="container-fluid">
+<div class="card-columns">
+ {% for products in product %}
+
+    <div class="card border-{{ var_color }} bg-food m-2 p-2">
+      <img class="card-img-top w-25 img-responsive mx-auto d-block rounded" src="{{ products.IMG_URL }}" alt="Card image cap">
+        <hr class="bg-{{ var_color }} border border-{{ var_color }}">
+        <div class="card-body">
+        <h5 class="card-title">{{ products.NOM }}</h5>
+        <p class="card-text">Nutriscore : {{ products.NUTRISCORE }} </p>
+    <hr class="bg-{{ var_color }} border-{{ var_color }}">
+
+
+        {% if user.is_authenticated %}
+      <a href="{% url 'save' products.id %}" class="btn btn-{{ var_color }} text-white"><strong id="save"> Save  </strong></a>
+      <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"> <strong> Consulter  </strong></a>
+      </div>
+        {% else %}
+
+      <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"><strong> Consulter  </strong></a>
+      </div>
+        {% endif %}
+    </div>
+
+{% endfor %}
+</div>
+</div>
+<!--Endblock Substitut-->
+<br>
+{% if user.is_authenticated %}
+{% else %}
+<h3 class="text-center"> <a class="text-{{var_color}}" href="#">Connectez-vous </a>  ou <a class="text-{{var_color}}" href="#">Inscrivez-vous</a>  afin d'enregistrer vos produits ! </h3>
+{% endif %}
+{% endblock content %}

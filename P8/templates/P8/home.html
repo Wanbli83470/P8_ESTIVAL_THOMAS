@@ -1,0 +1,105 @@
+{% extends "P8/base.html" %}
+
+{% load static %}
+
+{% block title%}
+    Accueil
+{% endblock title%}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<!--Graphic zone/pictures-->
+
+<div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
+    <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">Du gras oui mais de qualité !</h1>
+    <h2 style="text-shadow: 1px 1px 2px black;" class="text-center text-white">Trouver un produit de substitution pour ceux que vous consommez tous les jours</h2>
+    <br><br>
+
+<!--Search field-->
+
+<div class="container">
+<form style="opacity: 1;" action="{% url 'accueil' %}" method="POST">
+    {% csrf_token %}
+    {{ search_form|crispy }}
+    <button type="submit" class="btn btn-{{ var_color }} mx-auto d-block">Remplacer</button>
+</form>
+</div>
+
+<hr>
+
+</div>
+
+<br><br>
+
+<!-- Story of Colette and Remy -->
+
+<div id="History" class="text-center">
+    <h2>Colette et Remy</h2>
+    <h3> De la ratatouilles aux croissants </h3>
+<br>
+
+    <blockquote class="col blockquote"> "Nous aimons tous manger, surtout en France ! Personnellement, une baguette fraîche, du bon fromage de chèvre et un bon vin rouge me suffisent
+        amplement. Comme tout le monde, je fais mes courses au supermarché. Mais petit à petit je me suis rendue compte, surtout lorsque nous avons ouvert le restaurant,
+        que je pouvais remplacer les produits aseptisés que j'avais l'habitude d'acheter par de bons produits du terroir Et souvent pour le même prix !"
+    <cite class="blockquote-footer text-{{ var_color }}"> Colette Tatou </cite>
+
+    </blockquote>
+
+        <hr>
+
+    <blockquote class="col blockquote">Pour ma part je me rendais déjà dans bien des magasins car j'aime beaucoup me balader, surtout dans les caves et les cuisines.
+        Je connaissais par coeur le contenu des boutiques bio (dont je raffole) ainsi que les ingrédients de tous les aliments vendus. Lorsque Colette m'a demandé si elle
+        pouvait remplacer son Nutella matinal par un aliment plus sain, je savais tout de suite où le trouver. L'idée de Pur Beurre était née !
+    <cite class="blockquote-footer text-{{ var_color }}"> Remy </cite>
+
+    </blockquote>
+
+</div>
+
+<!--Part 3 : Pictures of Colette and Remy-->
+
+<div class="container">
+    <div class="row align-items-center">
+
+        <!-- Pictures Colette -->
+        <div class="col-md-6 col-sm-12 text-center">
+            <img width="50%" src="{% static 'P8/images/colette.png' %}" alt="Image Colette" />
+        </div>
+
+        <!--Pictures Remy-->
+        <div class="col-md-6 col-sm-12">
+            <img width="100%" src="{% static 'P8/images/remy.jpg' %}" alt="Image Remy" />
+        </div>
+
+    </div>
+</div>
+<br>
+<hr>
+<br>
+
+<!--Partie 4 : Contact-->
+
+<h2 class="text-center">Contactez-nous</h2>
+<h3 class="text-center"> Vous pouvez nous contacter ici même : </h3>
+
+<div class="container text-center">
+    <div class="row align-items-center">
+
+        <!-- Phone -->
+        <div class="col-md-6 col-sm-12 col-centered">
+            <h2><i class="fas fa-tty"></i></h2>
+            <h2> 00-00-00-00-00 </h2>
+        </div>
+
+        <!--E-mail adress-->
+
+        <div class="col-md-6 col-sm-12 col-centered">
+            <h2><i class="fas fa-envelope"></i></h2>
+            <h2> <a href="#">mail@mail.com</h2> </a>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
