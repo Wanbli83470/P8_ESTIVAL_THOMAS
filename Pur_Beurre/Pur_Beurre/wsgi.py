@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Pur_Beurre.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Pur_Beurre.Pur_Beurre.settings')
 
 application = get_wsgi_application()
