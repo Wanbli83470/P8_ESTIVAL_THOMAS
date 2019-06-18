@@ -42,8 +42,16 @@
           </div>
             {% endif %}
 
+        {% if products.NUTRISCORE == 1 %}
+        <h6 class="rounded bg-success position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
+        {% elif products.NUTRISCORE == 2 %}
+        <h6 class="rounded bg-warning position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
+        {% else %}
         <h6 class="rounded bg-danger position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
-        </div>
+        {% endif %}
+
+    </div>
+
 
     {% endfor %}
 </div>
