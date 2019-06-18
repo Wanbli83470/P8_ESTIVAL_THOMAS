@@ -28,10 +28,13 @@ def Legal_notice(request):
 def results(request, parse, name_categorie):
     parse = parse
     name_categorie = name_categorie
+    #On récupère l'identifiant des produits déjà sauvegardés
+    sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
+    sub_id = list(sub_id)
     cat_key = CATEGORIES.objects.get(NOM=name_categorie)
     product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
-    return render(request, 'P8/results.html', {"var_color": var_color, 'parse':parse, 'product':product})
+    return render(request, 'P8/results.html', {"var_color": var_color, 'parse': parse, 'product': product, "sub_id": sub_id})
 
 
 def accueil(request):
@@ -194,4 +197,4 @@ def user_products(request):
         print(type(s.PRODUIT_ID))
         maListProduit.append(s.PRODUIT_ID)
     print(maListProduit)
-    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub':sub})
+    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub': sub})

@@ -20,6 +20,12 @@
 
 
 <br>
+
+
+    <p>{{sub_id}}</p>
+
+
+
 <div class="container-fluid">
     <div class="card-columns">
      {% for products in product %}
@@ -28,7 +34,11 @@
           <img class="card-img-top w-25 img-responsive mx-auto d-block rounded" src="{{ products.IMG_URL }}" alt="Card image cap">
             <hr class="bg-{{ var_color }} border border-{{ var_color }}">
             <div class="card-body">
-            <h5 class="card-title">{{ products.NOM }}</h5>
+            <h5 class="card-title">{{ products.NOM }} {{products.id}}</h5>
+            {% if products.id in sub_id %}
+            <h5> Produit déjà enregistré ! </h5>
+            {% else %}
+            {% endif %}
         <hr class="bg-{{ var_color }} border-{{ var_color }}">
 
 
