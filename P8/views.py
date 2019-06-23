@@ -29,8 +29,12 @@ def results(request, parse, name_categorie):
     parse = parse
     name_categorie = name_categorie
     #On récupère l'identifiant des produits déjà sauvegardés
-    sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
-    sub_id = list(sub_id)
+    if str(request.user) != "AnonymousUser":
+        print("User =", request.user)
+        sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
+        sub_id = list(sub_id)
+    else:
+        sub_id = []
     cat_key = CATEGORIES.objects.get(NOM=name_categorie)
     product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
@@ -134,7 +138,7 @@ def register(request):
         messages.success(request, f'Votre compte {username} est crée')
         return redirect('/accueil')
 
-    else :
+    else:
         form = UserCreationForm()
         print("Echec")
 
@@ -165,7 +169,7 @@ def connexion(request):
     else:
         form = ConnexionForm()
 
-    return render(request, 'P8/connect.html', {'form':form, "var_color": var_color})
+    return render(request, 'P8/connect.html', {'form': form, "var_color": var_color})
 
 
 def deconnexion(request):
@@ -185,16 +189,9 @@ def espace(request):
 def user_products(request):
     # On utilise request pour voir l'utilisateur connecté
     print("utilisateur connecté : {}".format(request.user))
-    # On recueil les substituts de cet utilisateur
-    sub = SUBSTITUT.objects.filter(USER_FAVORITE=request.user)
-    print("Type = {}".format(type(sub)))
-    sub_product = PRODUIT.objects.filter(id=492)
-    print("sub product = {}".format(sub_product))
-    # On récupère les identifiants produits dans une liste
-    maListProduit = []
-    for s in sub:
-        print(s.PRODUIT_ID)
-        print(type(s.PRODUIT_ID))
-        maListProduit.append(s.PRODUIT_ID)
-    print(maListProduit)
-    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub': sub})
+    # On recueil les identifiants de substituts de cet utilisateur
+    sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
+    sub_id = list(sub_id)
+    # On récupère tous les produits
+    product = PRODUIT.objects.all()
+    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product})
