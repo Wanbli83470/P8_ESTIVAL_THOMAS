@@ -35,6 +35,7 @@ def results(request, parse, name_categorie):
         sub_id = list(sub_id)
     else:
         sub_id = []
+
     cat_key = CATEGORIES.objects.get(NOM=name_categorie)
     product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
 
@@ -187,11 +188,14 @@ def espace(request):
 
 
 def user_products(request):
+
     # On utilise request pour voir l'utilisateur connecté
     print("utilisateur connecté : {}".format(request.user))
     # On recueil les identifiants de substituts de cet utilisateur
     sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
     sub_id = list(sub_id)
+    print(type(sub_id))
+    nb_products = len(sub_id)
     # On récupère tous les produits
     product = PRODUIT.objects.all()
-    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product})
+    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'nb_products': nb_products, })
