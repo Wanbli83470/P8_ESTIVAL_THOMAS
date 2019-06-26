@@ -1,12 +1,10 @@
-from django.contrib import admin
+"""Importing views to assign functions to urls"""
 from django.urls import path
-from django.conf.urls import url
-from django.urls import include
-
 from . import views
 
+"""Write urls with the parameters in the url: string of character or numerical ID"""
 urlpatterns = [
-    path('Legal_notice',views.Legal_notice, name="Legal_Notice"),
+    path('Legal_notice', views.Legal_notice, name="Legal_Notice"),
     path('results/<str:parse>/<str:name_categorie>/', views.results, name="results"),
     path('connexion', views.connexion, name="connexion"),
     path('deconnexion', views.deconnexion, name="deconnexion"),

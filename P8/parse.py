@@ -12,14 +12,15 @@ class Parsing:
         self.nb_letter = nb_letter
 
     def parser(self):
-        myList = []
+        """Class method to parse input and remove stray characters"""
+        my_list = []
         for l in self.phrase:
             if l not in WORDS_FRENCH and len(l) > self.nb_letter:
-                myList.append(l + " ")
-                self.result = "".join(myList)
+                my_list.append(l + " ")
+                self.result = "".join(my_list)
                 self.result = self.result.lower()
                 for ch in ["l'", "d'"]:
-                    if ch in self.result :
-                        self.result = self.result.replace(ch,"")
+                    if ch in self.result:
+                        self.result = self.result.replace(ch, "")
 
         return self.result
