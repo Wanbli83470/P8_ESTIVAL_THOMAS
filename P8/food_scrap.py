@@ -116,19 +116,17 @@ class GetProductApi:
 
 
 class DetailScrapping:
-    def link_ns(self):
-        requête = r.get("https://fr-en.openfoodfacts.org/product/8413178288781/foot-balls-bubble-gum-acide-vidal")
+    def link_ns(self, link):
+        requête = r.get(link)
         html = requête.content
         soup = b(html, 'html.parser')
-        links = []
+        img_ns = []
         for link in soup.findAll('img', attrs={'src': re.compile("^https://static.openfoodfacts.org/images/misc/nutriscore")}):
-            links.append(link.get('src'))
-            print(link)
+            img_ns = link.get('src')
+            print(img_ns)
 
-        print(links)
+        print(img_ns)
+        return img_ns
 
     def value_100g(self):
         pass
-
-test = DetailScrapping()
-test.link_ns()
