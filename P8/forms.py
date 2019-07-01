@@ -11,4 +11,4 @@ class ConnexionForm(forms.Form):
 class SearchForm(forms.Form):
 
     """Creating the form class for the search field"""
-    Recherche = forms.CharField(max_length=50)
+    Recherche = forms.CharField(max_length=50, label='', widget=forms.TextInput(attrs={'placeholder': 'Je remplace...'}))
