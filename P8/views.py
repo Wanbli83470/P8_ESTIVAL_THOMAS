@@ -22,7 +22,8 @@ def base(request):
 
 
 def Legal_notice(request):
-    return render(request, 'P8/Legal_Notice.html', {"var_color": var_color})
+    search_form = SearchForm()
+    return render(request, 'P8/Legal_Notice.html', {"var_color": var_color, 'search_form': search_form})
 
 
 def results(request, parse, name_categorie):
@@ -114,13 +115,13 @@ def accueil(request):
         search_form = SearchForm()
         print("On ne rentre pas dans le formulaire")
 
-    return render(request, 'P8/home.html', {"var_color": var_color, 'search_form' : search_form})
+    return render(request, 'P8/home.html', {"var_color": var_color, 'search_form': search_form})
 
 
 def details(request, id):
-
+    search_form = SearchForm()
     food = PRODUIT.objects.get(id=id)
-    return render(request, 'P8/food_details.html', {"var_color": var_color, "food":food})
+    return render(request, 'P8/food_details.html', {"var_color": var_color, "food": food,'search_form': search_form})
 
 def save(request, pk):
     food = PRODUIT.objects.get(pk=pk)
@@ -129,7 +130,7 @@ def save(request, pk):
     return render(request, 'P8/home.html', {"var_color": var_color})
 
 def register(request):
-
+    search_form = SearchForm()
     form = UserCreationForm(request.POST)
 
     if form.is_valid():
@@ -143,7 +144,7 @@ def register(request):
         form = UserCreationForm()
         print("Echec")
 
-    return render(request, 'P8/register.html', {'form':form, "var_color": var_color})
+    return render(request, 'P8/register.html', {'form': form, "var_color": var_color, 'search_form': search_form})
 
 
 def connexion(request):
@@ -184,11 +185,12 @@ def deconnexion(request):
 
 
 def espace(request):
-    return render(request, 'P8/espace.html', {"var_color": var_color})
+    search_form = SearchForm()
+    return render(request, 'P8/espace.html', {"var_color": var_color, 'search_form': search_form})
 
 
 def user_products(request):
-
+    search_form = SearchForm()
     # On utilise request pour voir l'utilisateur connecté
     print("utilisateur connecté : {}".format(request.user))
     # On recueil les identifiants de substituts de cet utilisateur
@@ -198,4 +200,4 @@ def user_products(request):
     nb_products = len(sub_id)
     # On récupère tous les produits
     product = PRODUIT.objects.all()
-    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'nb_products': nb_products, })
+    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'nb_products': nb_products, 'search_form': search_form })
