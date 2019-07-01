@@ -6,6 +6,13 @@
 {% endblock title%}
 
 {% block content %}
+<div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
+    <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white"><strong>{{ user.username }}</strong></h1>
+    <br><br>
+
+</div>
+
+<hr>
 <div class="container-fluid p-3 text-white text-center">
     <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
         <h1>Bienvenue sur votre espace <strong> {{ user.username }} </strong>! </h1>
@@ -13,20 +20,4 @@
     </div>
 </div>
 
-<!--<div class="card-group">-->
-
-<!--{% for products in sub %}-->
-<!--    <div class="card m-3" style="width: 20%;">-->
-<!--      <img class="card-img-top w-75" src="{{ products.IMG_URL }}" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h5 class="card-title">{{ products.NOM }}</h5>-->
-<!--        <p class="card-text">{{ products.DESCRIPTION }} </p>-->
-<!--        <a href="{{ products.SUBSTITUT_URL }}" class="btn btn-primary">Consulter</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--{% endfor %}-->
-
-
-
-</div>
 {% endblock content %}
