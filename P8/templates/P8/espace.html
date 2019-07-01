@@ -6,18 +6,17 @@
 {% endblock title%}
 
 {% block content %}
-<div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1475585925456-280a1963b39f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2093&q=80);">
-    <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white"><strong>{{ user.username }}</strong></h1>
+<div class="border-bottom border-{{ var_color }}" style="background: center/cover url(https://images.unsplash.com/photo-1436564989038-18b9958df72b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
+    <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">Bienvenue sur votre espace <strong>{{ user.username }}</strong></h1>
     <br><br>
 
 </div>
-
-<hr>
 <div class="container-fluid p-3 text-white text-center">
     <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
-        <h1>Bienvenue sur votre espace <strong> {{ user.username }} </strong>! </h1>
         <h2 class="font-italic">Voici votre adresse email : {{ user.email }}</h2>
     </div>
 </div>
+<hr>
+
 
 {% endblock content %}

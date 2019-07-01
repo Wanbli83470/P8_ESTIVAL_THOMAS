@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!doctype html>
 
 <html lang="fr">
@@ -46,11 +46,12 @@
     </div>
 
       <!-- Search field -->
-    <div class="col-md-2 col-sm-6 offset-md-1 align-self-center">
-      <form>
-        <input class="form-control mr-sm-2" type="search" placeholder="Je remplace..." aria-label="Search">
-      </form>
-    </div>
+<form style="opacity: 1;" action="{% url 'accueil' %}" method="POST">
+    {% csrf_token %}
+    {{ search_form|crispy }}
+
+    <button type="submit" class="btn btn-{{ var_color }} mx-auto d-block">Remplacer</button>
+</form>
 
 <!--       IF CONNECTED        -->
 

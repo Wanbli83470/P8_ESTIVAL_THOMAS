@@ -23,6 +23,7 @@
 <form style="opacity: 1;" action="{% url 'accueil' %}" method="POST">
     {% csrf_token %}
     {{ search_form|crispy }}
+
     <button type="submit" class="btn btn-{{ var_color }} mx-auto d-block">Remplacer</button>
 </form>
 </div>
