@@ -9,12 +9,11 @@
 
 
 <p>{{sub_id}}</p>
-<p>Vous avez enregistré {{ nb_products }} produits ! </p>
+<h2 class="text-{{var_color}} text-center">Vous avez enregistré <strong> {{ nb_products }} </strong>produits ! </h2>
 
-<div class="container-fluid">
+<div class="container-fluid align-self-center">
     <div class="card-columns">
      {% for products in product %}
-
         {% if products.id in sub_id  %}
         <div class="card border-{{ var_color }} bg-food m-2 p-2">
           <img class="card-img-top w-25 img-responsive mx-auto d-block rounded" src="{{ products.IMG_URL }}" alt="Card image cap">
@@ -22,22 +21,22 @@
             <div class="card-body">
             <h5 class="card-title">{{ products.NOM }} {{products.id}}</h5>
         <hr class="bg-{{ var_color }} border-{{ var_color }}">
-
           <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"><strong> Consulter  </strong></a>
           </div>
+
         {% if products.NUTRISCORE == 1 %}
         <h6 class="rounded bg-success position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
         {% elif products.NUTRISCORE == 2 %}
         <h6 class="rounded bg-warning position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
         {% else %}
         <h6 class="rounded bg-danger position-absolute text-white" style="top:-4%; left:97%;"> {{ products.NUTRISCORE }} </h6>
-        {% endif %}
-        {% else %}
 
         {% endif %}
     </div>
-
-
+        {% else %}
+             {% endif %}
     {% endfor %}
+
+
 </div>
 {% endblock content %}
