@@ -116,8 +116,10 @@ class GetProductApi:
 
 
 class DetailScrapping:
-    def link_ns(self, link):
-        requête = r.get(link)
+    def __init__(self, link):
+        self.link = link
+    def link_ns(self,):
+        requête = r.get(self.link)
         html = requête.content
         soup = b(html, 'html.parser')
         img_ns = []
