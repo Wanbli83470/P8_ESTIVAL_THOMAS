@@ -10,8 +10,8 @@
 <!--Picture products-->
 <div class="container-fluid">
 
-    <div class="border-bottom border-{{ var_color }} mx-auto d-block">
-        <img src="{{ food.IMG_URL }}" class="img-fluid mx-auto d-block rounded" style="width:50%;" alt="Responsive image">
+    <div class="border-bottom border-{{ var_color }} mx-auto d-block w-50">
+        <img src="{{ food.IMG_URL }}" class="img-fluid mx-auto d-block rounded w-50" style="width:50%;" alt="Responsive image">
         <h1 style="text-shadow: 1px 1px 2px black;" class="p-5 text-center text-white">{{ food.NOM }}</h1>
 
     </div>
@@ -21,5 +21,8 @@
 <!--Link sheets OpenFoodFact-->
 
 <div class="w-75 bg-{{var_color}} text-center text-white mx-auto d-block btn"> <a href="{{ food.PRODUIT_URL }}"> <h1> Voir la fiche d'OpenFoodFacts  </h1></a> </div>
-    <p>{{ link_ns }}</p>
+   <div class="w-25 float-left">
+<img src="{{ link_ns }}" class="img-fluid mx-auto d-block rounded" style="width:50%;" alt="Responsive image">
+       </div>
+    <br><br><br><br><br>
 {% endblock content %}
