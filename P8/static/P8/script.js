@@ -25,6 +25,38 @@ $("#food_details").addClass("w-100");
 }
 else {
 console.log("plus grand que 1000")}
+
+//Méthode ajax
+var addAjax = $(".add-ajax")
+
+    addAjax.click(function(event){
+        event.preventDefault();
+            console.log("Form is not sending");
+            thisForm = $(this)
+            var actionEndpoint = thisForm.attr("action");
+            alert(actionEndpoint)
+            var httpMethod = thisForm.attr("method");
+            var formData = thisForm.serialize();
+
+
+            $.ajax({
+                url: actionEndpoint,
+                method: httpMethod,
+                data: formData,
+
+                    success:function(data){
+                        console.log("success")
+                        console.log(data)
+                        alert("Produit bien enregistré")
+                    },
+                    error:function(errorData){
+                        console.log("error")
+                        console.log(errorData)
+                    }
+                })
+        })
 });
+
+
 
 
