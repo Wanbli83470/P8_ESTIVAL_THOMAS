@@ -8,7 +8,7 @@
 {% block content %}
 
 
-<p>{{sub_id}}</p>
+
 <h2 class="text-{{var_color}} text-center">Vous avez enregistré <strong> {{ nb_products }} </strong>produits ! </h2>
 
 <div class="container-fluid align-self-center">
@@ -19,7 +19,7 @@
           <img class="card-img-top w-25 img-responsive mx-auto d-block rounded" src="{{ products.IMG_URL }}" alt="Card image cap">
             <hr class="bg-{{ var_color }} border border-{{ var_color }}">
             <div class="card-body">
-            <h5 class="card-title">{{ products.NOM }} {{products.id}}</h5>
+            <h5 class="card-title">{{ products.NOM }} </h5>
         <hr class="bg-{{ var_color }} border-{{ var_color }}">
           <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"><strong> Consulter  </strong></a>
           </div>

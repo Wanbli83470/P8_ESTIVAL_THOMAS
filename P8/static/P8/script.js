@@ -34,7 +34,6 @@ var addAjax = $(".add-ajax")
             console.log("Form is not sending");
             thisForm = $(this)
             var actionEndpoint = thisForm.attr("action");
-            alert(actionEndpoint)
             var httpMethod = thisForm.attr("method");
             var formData = thisForm.serialize();
 
