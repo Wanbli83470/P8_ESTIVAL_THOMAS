@@ -1,6 +1,13 @@
 $(document).ready(function(){
+
     $("#footer").click(function(){
         alert("La detection Jquery fonctionne");
+    });
+
+    $(".button_save").click(function(){
+        $(this).addClass("disabled");
+        $(this).html("<strong> saved product </strong>");
+
     });
 
     $("#icône_accueil").mouseover(function(){
@@ -30,6 +37,7 @@ console.log("plus grand que 1000")}
 var addAjax = $(".add-ajax")
 
     addAjax.click(function(event){
+$("#ns").addClass("w-50");
         event.preventDefault();
             console.log("Form is not sending");
             thisForm = $(this)
@@ -46,7 +54,6 @@ var addAjax = $(".add-ajax")
                     success:function(data){
                         console.log("success")
                         console.log(data)
-                        alert("Produit bien enregistré")
                     },
                     error:function(errorData){
                         console.log("error")
