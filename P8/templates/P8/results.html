@@ -41,7 +41,7 @@
 
             {% if user.is_authenticated %}
           <form class="add-ajax" method="POST" action="{% url 'save' products.id %}" data-toggle="modal" data-target="#saveModal" > {% csrf_token %}
-              <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save" data-toggle="modal" data-target="#saveModal" > <strong> Save </strong> </button>
+              <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save" data-toggle="modal" data-target="#saveModal" > <strong> Sauvegarder </strong> </button>
           </form>
 
           <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"> <strong> Consulter  </strong></a>

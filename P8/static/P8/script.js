@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $(".button_save").click(function(){
         $(this).addClass("disabled");
-        $(this).html("<strong> saved product </strong>");
+        $(this).html("<strong> déjà sauvegardé </strong>");
 
     });
 
