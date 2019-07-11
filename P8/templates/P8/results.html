@@ -32,18 +32,18 @@
             <hr class="bg-{{ var_color }} border border-{{ var_color }}">
             <div class="card-body">
             <h5 class="card-title">{{ products.NOM }} </h5>
-            {% if products.id in sub_id %}
-              <h4><i class="fas fa-bookmark"></i> Produit enregistré ! </h4>
-            {% else %}
-            {% endif %}
+
         <hr class="bg-{{ var_color }} border-{{ var_color }}">
 
 
             {% if user.is_authenticated %}
-          <form class="add-ajax" method="POST" action="{% url 'save' products.id %}" data-toggle="modal" data-target="#saveModal" > {% csrf_token %}
-              <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save w-25" data-toggle="modal" data-target="#saveModal" > <strong> Sauvegarder </strong> </button>
-          </form>
-
+                            {% if products.id in sub_id %}
+                              <h4 class="float-left d-block"><i class="fas fa-bookmark"></i> Produit enregistré ! </h4>
+                            {% else %}
+                                        <form class="add-ajax" method="POST" action="{% url 'save' products.id %}" data-toggle="modal" data-target="#saveModal" > {% csrf_token %}
+                                            <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save w-25" data-toggle="modal" data-target="#saveModal" > <strong> Sauvegarder </strong> </button>
+                                        </form>
+                            {% endif %}
           <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-25 text-white"> <strong> Consulter  </strong></a>
           </div>
             {% else %}
