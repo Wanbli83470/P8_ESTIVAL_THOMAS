@@ -1,9 +1,5 @@
 $(document).ready(function(){
 
-    $("#footer").click(function(){
-        alert("La detection Jquery fonctionne");
-    });
-
     $(".button_save").click(function(){
         $(this).addClass("disabled");
         $(this).html("<strong> déjà sauvegardé </strong>");
@@ -29,14 +25,20 @@ $("#ns").removeClass("w-25");
 $("#ns").addClass("w-50");
 $("#food_details").removeClass("w-50");
 $("#food_details").addClass("w-100");
+
+$(".btn").removeClass("w-25");
+$(".btn").addClass("w-50");
+
 }
+
 else {
-console.log("plus grand que 1000")}
+console.log("plus grand que 1000");
+}
 
 //Méthode ajax
-var addAjax = $(".add-ajax")
+var addAjax = $(".add-ajax");
 
-    addAjax.click(function(event){
+addAjax.click(function(event){
 $("#ns").addClass("w-50");
         event.preventDefault();
             console.log("Form is not sending");

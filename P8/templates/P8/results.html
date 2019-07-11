@@ -41,14 +41,14 @@
 
             {% if user.is_authenticated %}
           <form class="add-ajax" method="POST" action="{% url 'save' products.id %}" data-toggle="modal" data-target="#saveModal" > {% csrf_token %}
-              <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save" data-toggle="modal" data-target="#saveModal" > <strong> Sauvegarder </strong> </button>
+              <button id="button_save" type="button" class="btn btn-{{ var_color }} float-left button_save w-25" data-toggle="modal" data-target="#saveModal" > <strong> Sauvegarder </strong> </button>
           </form>
 
-          <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"> <strong> Consulter  </strong></a>
+          <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-25 text-white"> <strong> Consulter  </strong></a>
           </div>
             {% else %}
 
-          <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-50 text-white"><strong> Consulter  </strong></a>
+          <a href="{% url 'details' products.id %}" class="btn btn-{{ var_color }} float-right w-25 text-white"><strong> Consulter  </strong></a>
           </div>
             {% endif %}
 
@@ -68,7 +68,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">produit enrengistré !</h4>
+          <h4 class="modal-title">produit enregistré !</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
