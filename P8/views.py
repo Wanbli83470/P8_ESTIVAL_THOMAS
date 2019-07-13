@@ -200,7 +200,6 @@ def user_products(request):
     sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
     sub_id = list(sub_id)
     print(type(sub_id))
-    nb_products = len(sub_id)
     # On récupère tous les produits
     product = PRODUIT.objects.all()
-    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'nb_products': nb_products, 'search_form': search_form })
+    return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'search_form': search_form})

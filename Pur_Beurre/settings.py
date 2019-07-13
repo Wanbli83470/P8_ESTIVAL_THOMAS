@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'P8.context_processors.ma_var',
+                'P8.context_processors.nb_products',
             ],
         },
     },
