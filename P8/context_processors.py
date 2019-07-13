@@ -1,9 +1,5 @@
 from .models import CATEGORIES, SUBSTITUT, PRODUIT
 
-def ma_var(a):
-    ma_var = "Une chaine avec le context-processor"
-    return {'ma_var': ma_var}
-
 def nb_products(request):
     if str(request.user) != "AnonymousUser":
         sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
