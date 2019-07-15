@@ -141,17 +141,19 @@ class DetailScrapping:
             for t in l.findAll("td", class_="nutriment_label"):
 
                 title.append(t.text)
+                title = title[0:9]
                 nb = len(title)
 
 
             print(" \npassage aux valeurs \n")
 
-            for v in l.findAll("td", class_="nutriment_value"):
-                print(v)
+            for v in l.findAll(attrs={'property': re.compile(r"100g$")}):
 
-                value.append(v.text[0])
+                print(v)
+                print(type(v))
+
+                value.append(v.text)
                 value = value[0:nb]
 
-        print(title)
-        print(value)
-        return title
+
+        return title, value
