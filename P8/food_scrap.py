@@ -139,15 +139,19 @@ class DetailScrapping:
         for l in self.soup.findAll(id="nutrition_data_table"):
 
             for t in l.findAll("td", class_="nutriment_label"):
-                print(t.text)
-                title.append(t.findAll("td", class_="nutriment_label"))
+
+                title.append(t.text)
                 nb = len(title)
-                print(nb)
+
 
             print(" \npassage aux valeurs \n")
 
             for v in l.findAll("td", class_="nutriment_value"):
-                print(v.text)
-                value.append(v.findAll("td", class_="nutriment_value"))
-                print(value)
+                print(v)
 
+                value.append(v.text[0])
+                value = value[0:nb]
+
+        print(title)
+        print(value)
+        return title

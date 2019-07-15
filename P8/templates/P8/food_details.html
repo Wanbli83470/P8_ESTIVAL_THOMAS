@@ -29,6 +29,13 @@
 </div>
 
 <!--Value 100g-->
-{{ value100g }}
+<div class="float-right">
+{% for v in value100g %}
+ {{ v }}
+
+<br>
+    {% endfor %}
+</div>
+
     <br><br><br><br><br>
 {% endblock content %}
