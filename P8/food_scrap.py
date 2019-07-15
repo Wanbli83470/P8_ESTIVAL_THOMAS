@@ -116,19 +116,38 @@ class GetProductApi:
 
 
 class DetailScrapping:
-    def __init__(self, link):
+    def __init__(self, link, soup=str):
         self.link = link
-    def link_ns(self,):
         requête = r.get(self.link)
         html = requête.content
         soup = b(html, 'html.parser')
+        self.soup = soup
+
+    def link_ns(self):
         img_ns = []
-        for link in soup.findAll('img', attrs={'src': re.compile("^https://static.openfoodfacts.org/images/misc/nutriscore")}):
+        for link in self.soup.findAll('img', attrs={'src': re.compile("^https://static.openfoodfacts.org/images/misc/nutriscore")}):
             img_ns = link.get('src')
             print(img_ns)
 
-        print(img_ns)
         return img_ns
 
     def value_100g(self):
-        pass
+        title = []
+        value = []
+        nb = 0
+
+        for l in self.soup.findAll(id="nutrition_data_table"):
+
+            for t in l.findAll("td", class_="nutriment_label"):
+                print(t.text)
+                title.append(t.findAll("td", class_="nutriment_label"))
+                nb = len(title)
+                print(nb)
+
+            print(" \npassage aux valeurs \n")
+
+            for v in l.findAll("td", class_="nutriment_value"):
+                print(v.text)
+                value.append(v.findAll("td", class_="nutriment_value"))
+                print(value)
+

@@ -123,8 +123,9 @@ def details(request, id):
     food = PRODUIT.objects.get(id=id)
     food_link = food.PRODUIT_URL
     link_ns = DetailScrapping(link=food_link)
-    link_ns = link_ns.link_ns()
-    return render(request, 'P8/food_details.html', {"var_color": var_color, "food": food,'search_form': search_form, "link_ns": link_ns})
+    img_ns = link_ns.link_ns()
+    value100g = link_ns.value_100g()
+    return render(request, 'P8/food_details.html', {"var_color": var_color, "food": food, 'search_form': search_form, "img_ns": img_ns, "value100g": value100g})
 
 def save(request, pk):
     food = PRODUIT.objects.get(pk=pk)
