@@ -37,9 +37,14 @@ console.log("plus grand que 1000");
 
 //Méthode ajax
 var addAjax = $(".add-ajax");
+var nb_products = $("#nb_products").text();
 
 addAjax.click(function(event){
 $("#ns").addClass("w-50");
+        nb_products = parseInt(nb_products)
+        nb_products += 1
+        $("#nb_products").text(nb_products);
+
         event.preventDefault();
             console.log("Form is not sending");
             thisForm = $(this)
@@ -63,6 +68,7 @@ $("#ns").addClass("w-50");
                     }
                 })
         })
+
 });
 
 
