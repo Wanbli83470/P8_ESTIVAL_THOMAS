@@ -149,9 +149,6 @@ class DetailScrapping:
 
             for v in l.findAll(attrs={'property': re.compile(r"100g$")}):
 
-                print(v)
-                print(type(v))
-
                 value.append(v.text)
                 value = value[0:nb]
 
