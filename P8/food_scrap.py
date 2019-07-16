@@ -49,8 +49,8 @@ class ScrappingJson:
 
 
 class GetProductApi:
-    def __init__(self, nb_product = 10, requête=""):
-        self.nb_product = nb_product #Le nombre de produits
+    def __init__(self, max_product=200, requête=""):
+        self.max_product = max_product #max product
         self.requête = r.get(requête)
 
     def get(self):
