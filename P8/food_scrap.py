@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as b
 import unicodedata
 import re
 import json
-
+import math
 
 class ScrappingJson:
     def __init__(self, product):
@@ -43,15 +43,15 @@ class ScrappingJson:
         product_json = product_json[3:]
         print(product_json)
         # Configuring the url category in json
-        category_json = "https://fr-en.openfoodfacts.org/category/{}/1.json".format(product_json)
+        category_json = product_json
         print(category_json)
         return category_json, product_json
 
 
 class GetProductApi:
-    def __init__(self, max_product=200, requête=""):
-        self.max_product = max_product #max product
-        self.requête = r.get(requête)
+    def __init__(self, max_pages=5, requête=""):
+        self.max_pages = max_pages #max product
+        self.requête = r.get("https://fr-en.openfoodfacts.org/category/{}/1.json".format(requête))
 
     def get(self):
         # Creation list for BDD
@@ -62,6 +62,12 @@ class GetProductApi:
 
         print("la requête retourne un code : {}".format(self.requête))
         json_category = self.requête.json()
+        info = self.requête.json()
+        count = info['count']
+        page_size = info['page_size']
+
+        nbPages = int(math.floor(count / page_size) + 1)  # On déduit le nombre de pages
+        print("nombre de pages = " + str(nbPages))
         i = 0
         for data in json_category["products"]:
 
@@ -82,11 +88,11 @@ class GetProductApi:
 
                 except KeyError:
                     print("un produit sans image; n°{}".format(i))
-                    numéro = i
+                    numero = i
 
-                    del url[numéro]
-                    del name[numéro]
-                    del ns[numéro]
+                    del url[numero]
+                    del name[numero]
+                    del ns[numero]
 
         print(url)
         print(name)

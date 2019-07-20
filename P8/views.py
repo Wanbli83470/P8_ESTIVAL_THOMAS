@@ -69,7 +69,7 @@ def accueil(request):
         link_categorie = link_categorie[0]
 
         # On initialise l'instance de classe GetProductApi
-        substitut = GetProductApi(max_product=200, requête=link_categorie)
+        substitut = GetProductApi(max_pages=5, requête=link_categorie)
         substitut = substitut.get()
         substitut_url = substitut[0]
         substitut_name = substitut[1]
