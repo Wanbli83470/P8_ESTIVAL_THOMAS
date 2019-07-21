@@ -51,7 +51,7 @@ class ScrappingJson:
 class GetProductApi:
     def __init__(self, max_pages=5, requête=""):
         self.max_pages = max_pages #max product
-        self.requête = r.get("https://fr-en.openfoodfacts.org/category/{}/1.json".format(requête))
+        self.requête = requête
 
     def get(self):
         # Creation list for BDD
@@ -61,45 +61,50 @@ class GetProductApi:
         link_pictures = []
 
         print("la requête retourne un code : {}".format(self.requête))
-        json_category = self.requête.json()
-        info = self.requête.json()
+        dynamic_link = r.get("https://fr-en.openfoodfacts.org/category/{}/1.json".format(self.requête))
+        info = dynamic_link.json()
         count = info['count']
         page_size = info['page_size']
 
         nbPages = int(math.floor(count / page_size) + 1)  # On déduit le nombre de pages
         print("nombre de pages = " + str(nbPages))
         i = 0
-        for data in json_category["products"]:
+        live_page = 1
+        while live_page <= nbPages:
+            dynamic_json = dynamic_link.json()
+            for data in dynamic_json["products"]:
 
-            # Filter produced with nutriscore
+                # Filter produced with nutriscore
 
-            if data["nutrition_grades_tags"] != ['not-applicable'] and data["nutrition_grades_tags"] != ['unknown'] :
-                try :
-                    url.append((data["url"]))
+                if data["nutrition_grades_tags"] != ['not-applicable'] and data["nutrition_grades_tags"] != ['unknown']:
+                    try:
+                        url.append((data["url"]))
 
-                    name.append((data["product_name"]))
-                    ns.append((data["nutrition_grades_tags"][0]))
-                    link_pictures.append((data["image_url"]))
-                    i = i + 1
+                        name.append((data["product_name"]))
+                        ns.append((data["nutrition_grades_tags"][0]))
+                        link_pictures.append((data["image_url"]))
+                        i = i + 1
 
 
-                #
-                # Deleting products without images
+                    #
+                    # Deleting products without images
 
-                except KeyError:
-                    print("un produit sans image; n°{}".format(i))
-                    numero = i
+                    except KeyError:
+                        print("un produit sans image; n°{}".format(i))
+                        numero = i
 
-                    del url[numero]
-                    del name[numero]
-                    del ns[numero]
+                        del url[numero]
+                        del name[numero]
+                        del ns[numero]
 
-        print(url)
-        print(name)
-        print(link_pictures)
-        print(ns)
+            live_page += 1
+            dynamic_link = r.get("https://fr-en.openfoodfacts.org/category/{}/{}.json".format(self.requête, live_page))
+            print(live_page)
+            print(dynamic_link)
+            if live_page > self.max_pages:
+                break
 
-        # Convert number to letters
+            # Convert number to letters
         for n, i in enumerate(ns):
             if i == 'a':
                 ns[n] = 1
@@ -111,7 +116,6 @@ class GetProductApi:
                 ns[n] = 3
 
             elif i == 'd':
-
                 ns[n] = 4
             elif i == 'e':
                 ns[n] = 5
