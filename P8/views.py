@@ -14,10 +14,11 @@ from .food_scrap import ScrappingJson, GetProductApi, DetailScrapping
 from .models import CATEGORIES, SUBSTITUT, PRODUIT
 
 """Color without connection"""
-var_color = "Rooibos_chocolat"
+var_color = "Rooibos_chocolat"   # Defined the theme color
 
 
 def base(request):
+    """We use the render module of Django to display the html page and pass variables in parameter"""
     return render(request, 'P8/base.html', {"var_color": var_color})
 
 
@@ -53,7 +54,6 @@ def accueil(request):
         parse = Parsing(phrase=search, nb_letter=3)
         parse = parse.parser()
         print(parse)
-
 
         """" Obtention de la catégorie"""
 
@@ -130,18 +130,19 @@ def details(request, id):
     print(value100g)
     return render(request, 'P8/food_details.html', {"var_color": var_color, "food": food, 'search_form': search_form, "img_ns": img_ns, "value100g": value100g, "titles": titles})
 
+
 def save(request, pk):
     food = PRODUIT.objects.get(pk=pk)
     test_save_product = SUBSTITUT.objects.get_or_create(PRODUIT_ID=food, USER_FAVORITE=request.user)
     print(test_save_product)
     return render(request, 'P8/home.html', {"var_color": var_color})
 
+
 def register(request):
     search_form = SearchForm()
     form = UserCreationForm(request.POST)
 
     if form.is_valid():
-        print("ok compte (:")
         form.save()
         username = form.cleaned_data['username']
         messages.success(request, f'Votre compte {username} est crée')
@@ -165,14 +166,16 @@ def connexion(request):
             print("form valide !")
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
+            user = authenticate(username=username, password=password)  # Verification of user input
+
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
-                var_color = "Biscuit_trempé"
+                var_color = "Biscuit_trempé"  # Changing the theme color
                 print("Var color devient {}".format(var_color))
                 print("redirection accueil")
                 return redirect('/accueil')
-            else: # sinon une erreur sera affichée
+
+            else:
                 print("Else !")
                 error = True
     else:
@@ -183,8 +186,8 @@ def connexion(request):
 
 def deconnexion(request):
     global var_color
-    logout(request)
-    var_color = "Rooibos_chocolat"
+    logout(request)  # Using the django logout
+    var_color = "Rooibos_chocolat"  # Changing the theme color
     print("déconnexion : var_color devient {}".format(var_color))
     time.sleep(2)
     print("redirection vers page d'accueil")
@@ -198,12 +201,12 @@ def espace(request):
 
 def user_products(request):
     search_form = SearchForm()
-    # On utilise request pour voir l'utilisateur connecté
+    # Using request to view the logged in user
     print("utilisateur connecté : {}".format(request.user))
-    # On recueil les identifiants de substituts de cet utilisateur
+    # Establish a list of user's product ids
     sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
     sub_id = list(sub_id)
     print(type(sub_id))
-    # On récupère tous les produits
+    # Recover all products with "Objects.all"
     product = PRODUIT.objects.all()
     return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'search_form': search_form})

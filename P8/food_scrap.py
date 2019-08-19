@@ -5,7 +5,9 @@ import re
 import json
 import math
 
+
 class ScrappingJson:
+
     def __init__(self, product):
         self.product = product
 
@@ -50,7 +52,7 @@ class ScrappingJson:
 
 class GetProductApi:
     def __init__(self, max_pages=5, requête=""):
-        self.max_pages = max_pages #max product
+        self.max_pages = max_pages # max product
         self.requête = requête
 
     def get(self):
@@ -153,7 +155,6 @@ class DetailScrapping:
                 title.append(t.text)
                 title = title[0:9]
                 nb = len(title)
-
 
             print(" \npassage aux valeurs \n")
 
