@@ -7,7 +7,7 @@ import math
 
 
 class ScrappingJson:
-
+    """Using scrapping to retrieve a product URL and a barcode"""
     def __init__(self, product):
         self.product = product
 
@@ -31,6 +31,7 @@ class ScrappingJson:
         return self.link_product
 
     def get_json_categorie(self):
+        """Using the API a category name"""
         # get the product barcode
         print(self.link_product)
         CB_link = re.findall("([0-9]+)", self.link_product)
@@ -51,6 +52,7 @@ class ScrappingJson:
 
 
 class GetProductApi:
+    """Class to request the API to get products in JSON format"""
     def __init__(self, max_pages=5, requête=""):
         self.max_pages = max_pages # max product
         self.requête = requête
@@ -69,7 +71,7 @@ class GetProductApi:
         page_size = info['page_size']
 
         nbPages = int(math.floor(count / page_size) + 1)  # On déduit le nombre de pages
-        print("nombre de pages = " + str(nbPages))
+        print("numbers pages = " + str(nbPages))
         i = 0
         live_page = 1
         while live_page <= nbPages:
@@ -88,7 +90,7 @@ class GetProductApi:
                         i = i + 1
 
 
-                    #
+
                     # Deleting products without images
 
                     except KeyError:
@@ -128,6 +130,7 @@ class GetProductApi:
 
 
 class DetailScrapping:
+    """Class for obtaining additional information when the user clicks on "consult"""
     def __init__(self, link, soup=str):
         self.link = link
         requête = r.get(self.link)
@@ -136,7 +139,9 @@ class DetailScrapping:
         self.soup = soup
 
     def link_ns(self):
+        """Function to recover the url of the nutriscore image"""
         img_ns = []
+        # Using a regular expression matching the typical url
         for link in self.soup.findAll('img', attrs={'src': re.compile("^https://static.openfoodfacts.org/images/misc/nutriscore")}):
             img_ns = link.get('src')
             print(img_ns)
@@ -144,10 +149,11 @@ class DetailScrapping:
         return img_ns
 
     def value_100g(self):
-        title = []
-        value = []
+        title = []  # Subtitles list
+        value = []  # List of nutritional values
         nb = 0
 
+        # Using for loop to enter the openfoodffact array
         for l in self.soup.findAll(id="nutrition_data_table"):
 
             for t in l.findAll("td", class_="nutriment_label"):
