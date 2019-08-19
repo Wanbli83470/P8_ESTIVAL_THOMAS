@@ -19,7 +19,8 @@ var_color = "Rooibos_chocolat"   # Defined the theme color
 
 def base(request):
     """We use the render module of Django to display the html page and pass variables in parameter"""
-    return render(request, 'P8/base.html', {"var_color": var_color})
+    search_form = SearchForm()
+    return render(request, 'P8/base.html', {"var_color": var_color, "search_form": search_form})
 
 
 def Legal_notice(request):
@@ -28,20 +29,21 @@ def Legal_notice(request):
 
 
 def results(request, parse, name_categorie):
+    search_form = SearchForm()
     parse = parse
     name_categorie = name_categorie
-    #On récupère l'identifiant des produits déjà sauvegardés
-    if str(request.user) != "AnonymousUser":
+    # Recovery of already saved products to avoid duplication
+    if str(request.user) != "AnonymousUser":  # Condition to ensure that a user is well connected
         print("User =", request.user)
         sub_id = SUBSTITUT.objects.filter(USER_FAVORITE=request.user).values_list('PRODUIT_ID', flat=True)
-        sub_id = list(sub_id)
+        sub_id = list(sub_id)  # list of products already saved
     else:
         sub_id = []
 
-    cat_key = CATEGORIES.objects.get(NOM=name_categorie)
-    product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))
+    cat_key = CATEGORIES.objects.get(NOM=name_categorie)  # Recovering category ID
+    product = PRODUIT.objects.filter(Q(CATEGORIE_ID=cat_key) & Q(NUTRISCORE__lt=4))  # Obtaining products of a category with nutriscore less than 4
 
-    return render(request, 'P8/results.html', {"var_color": var_color, 'parse': parse, 'product': product, "sub_id": sub_id})
+    return render(request, 'P8/results.html', {"var_color": var_color, 'parse': parse, 'product': product, "sub_id": sub_id, "search_form": search_form})
 
 
 def accueil(request):
@@ -50,25 +52,23 @@ def accueil(request):
     if search_form.is_valid():
         search = search_form.cleaned_data["Recherche"]
 
-        # Fonction de parse
+        # Parse function
         parse = Parsing(phrase=search, nb_letter=3)
         parse = parse.parser()
         print(parse)
 
         """" Obtention de la catégorie"""
 
-        # On initialise l'instance de classe Scrapping_json
+        # We use ScrappingJson to get a product link
         products = ScrappingJson(parse)
-
-        # On récupère le liens du produit
         products.get_product_url()
 
-        # On récupère le liens de la catégorie json avec l'api
+        # We recover links of similar categories
         link_categorie = products.get_json_categorie()
         name_categorie = link_categorie[1]
         link_categorie = link_categorie[0]
 
-        # On initialise l'instance de classe GetProductApi
+        # We fill out temporary lists of products
         substitut = GetProductApi(max_pages=5, requête=link_categorie)
         substitut = substitut.get()
         substitut_url = substitut[0]
@@ -76,7 +76,7 @@ def accueil(request):
         substitut_nutriscore = substitut[2]
         substitut_pictures = substitut[3]
 
-        # Enregistrement en BDD de la catégorie si inexistante
+        # BDD registration of the category if nonexistent
         cat = CATEGORIES.objects.get_or_create(NOM=name_categorie, LINK_OFF=link_categorie)
         test_cat = False
 
@@ -89,16 +89,16 @@ def accueil(request):
             test_cat = False
             print(test_cat)
 
-        # Enregistrement en BDD des produits
+        # Product database registration
 
-        # 1 on compte le nombre de produits
+        # 1 Counting the number of products
         nb_products = len(substitut_pictures)
         print("on propose : {} produits".format(nb_products))
 
-        # 2 On Récupère la clef étrangère de catégorie
+        # 2 Foreign key recovery of the product
         key_cat = CATEGORIES.objects.get(NOM=name_categorie)
 
-        # 3 On boucle pour insérer les produits dans la BDD
+        # 3 Product insertion loop
         i = 0
 
         if test_cat == True:
@@ -108,9 +108,9 @@ def accueil(request):
                 i = i + 1
                 print("i vaut : {}".format(i))
 
-
-        # Redirection vers la page results avec le nom du produit
+        # Redirect to the results page with the product name
         return HttpResponseRedirect(reverse('results', args=(parse, name_categorie)))
+
     else:
         search_form = SearchForm()
         print("On ne rentre pas dans le formulaire")
@@ -120,18 +120,22 @@ def accueil(request):
 
 def details(request, id):
     search_form = SearchForm()
-    food = PRODUIT.objects.get(id=id)
-    food_link = food.PRODUIT_URL
-    link_ns = DetailScrapping(link=food_link)
-    img_ns = link_ns.link_ns()
+
+    food = PRODUIT.objects.get(id=id)  # Product ID recovery
+    food_link = food.PRODUIT_URL  # Url recovery of the product
+
+    link_ns = DetailScrapping(link=food_link)  # Initialization DetalScrapping class for additional information
+    img_ns = link_ns.link_ns()  # Retrieving the image of the nutriscore
+
     value100g = link_ns.value_100g()
-    titles = value100g[0]
-    value100g = value100g[1]
-    print(value100g)
+    titles = value100g[0]  # Subtitle recovery
+    value100g = value100g[1]  # Recovery of nutritional values
+
     return render(request, 'P8/food_details.html', {"var_color": var_color, "food": food, 'search_form': search_form, "img_ns": img_ns, "value100g": value100g, "titles": titles})
 
 
 def save(request, pk):
+    """Using get_or_create to save only new items in the database"""
     food = PRODUIT.objects.get(pk=pk)
     test_save_product = SUBSTITUT.objects.get_or_create(PRODUIT_ID=food, USER_FAVORITE=request.user)
     print(test_save_product)
@@ -140,9 +144,9 @@ def save(request, pk):
 
 def register(request):
     search_form = SearchForm()
-    form = UserCreationForm(request.POST)
+    form = UserCreationForm(request.POST)  # We post the registration form
 
-    if form.is_valid():
+    if form.is_valid():  # if correct data, the user is saved.
         form.save()
         username = form.cleaned_data['username']
         messages.success(request, f'Votre compte {username} est crée')
@@ -168,8 +172,8 @@ def connexion(request):
             password = form.cleaned_data["password"]
             user = authenticate(username=username, password=password)  # Verification of user input
 
-            if user:  # Si l'objet renvoyé n'est pas None
-                login(request, user)  # nous connectons l'utilisateur
+            if user:
+                login(request, user)
                 var_color = "Biscuit_trempé"  # Changing the theme color
                 print("Var color devient {}".format(var_color))
                 print("redirection accueil")
