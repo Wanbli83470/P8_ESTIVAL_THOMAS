@@ -1,9 +1,9 @@
 """ imporation de render afin d'afficher le code HTML """
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .forms import ConnexionForm, SearchForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -214,3 +214,9 @@ def user_products(request):
     # Recover all products with "Objects.all"
     product = PRODUIT.objects.all()
     return render(request, 'P8/user_products.html', {"var_color": var_color, 'sub_id': sub_id, 'product': product, 'search_form': search_form})
+
+# Gestion des pages d'erreurs
+
+# HTTP Error 400
+def server_error(request):
+    return render(request, 'P8/500.html', {"var_color": var_color})
