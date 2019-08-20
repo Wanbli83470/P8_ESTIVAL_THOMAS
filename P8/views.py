@@ -144,8 +144,8 @@ def save(request, pk):
 
 def register(request):
     search_form = SearchForm()
-    form = UserCreationForm(request.POST)  # We post the registration form
 
+    form = UserCreationForm(request.POST)  # We post the registration form
     if form.is_valid():  # if correct data, the user is saved.
         form.save()
         username = form.cleaned_data['username']
@@ -176,11 +176,8 @@ def connexion(request):
                 login(request, user)
                 var_color = "Biscuit_trempé"  # Changing the theme color
                 print("Var color devient {}".format(var_color))
-                print("redirection accueil")
                 return redirect('/accueil')
-
             else:
-                print("Else !")
                 error = True
     else:
         form = ConnexionForm()
