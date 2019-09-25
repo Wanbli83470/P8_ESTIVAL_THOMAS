@@ -182,7 +182,7 @@ def connexion(request):
     else:
         form = ConnexionForm()
 
-    return render(request, 'P8/connect.html', {'form': form, "var_color": var_color})
+    return render(request, 'P8/connect.html', {'form': form, "var_color": var_color, 'error': error,})
 
 
 def deconnexion(request):

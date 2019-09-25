@@ -5,19 +5,10 @@ from django.contrib.auth.models import User
 from Pur_Beurre.wsgi import *
 import os
 from django.db.models import Q
-# We test the obtaining of a 200 response on the home page
-class IndexPageTestCase(TestCase):
-    def test_index_page(self):
-        response = self.client.get(reverse('accueil'))
-        self.assertEqual(response.status_code, 200)
-# We test the obtaining of a 404 response on the page error
-"""    def test_error_page(self):
-        response = self.client.get(reverse('error'))
-        self.assertEqual(response.status_code, 500)"""
+
 
 class GetTestCase(TestCase):
     def setUp(self):
-        print(os.environ)
         """Setup for data products"""
         CATEGORIES.objects.create(NOM="testCat", LINK_OFF="www.testcat.com")
         self.cat_key = CATEGORIES.objects.get(NOM="testCat")
@@ -43,7 +34,15 @@ class GetTestCase(TestCase):
 # On test la connexion d'un utilisateur
 
 class CodeHttp(TestCase):
-    def page_404(self):
-        c = Client()
-        response = c.get("/adressess/")
-        print(response.status_code)
+    def setUp(self):
+        self.c = Client()
+
+    def test_page_200(self):
+        """We test the obtaining of a 200 response on the home page"""
+        response = self.c.get("/accueil")
+        self.assertEqual(response.status_code, 200)
+
+    def test_page_404(self):
+        """We test the obtaining of a 404 response on the page error"""
+        response = self.c.get("/adressess/")
+        self.assertEqual(response.status_code, 404)
