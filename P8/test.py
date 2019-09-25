@@ -13,6 +13,7 @@ class GetTestCase(TestCase):
         CATEGORIES.objects.create(NOM="testCat", LINK_OFF="www.testcat.com")
         self.cat_key = CATEGORIES.objects.get(NOM="testCat")
         PRODUIT.objects.create(NOM="testProduct", IMG_URL="www.urls.images", STORE="Store", NUTRISCORE=2, CATEGORIE_ID=self.cat_key)
+        PRODUIT.objects.create(NOM="testProduct2", IMG_URL="www.urls.images", STORE="Store", NUTRISCORE=4, CATEGORIE_ID=self.cat_key)
         # SUBSTITUT.objects.create(PRODUIT_ID="" ,USER_FAVORITE="")
 
     def test_save_products(self):
