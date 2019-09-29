@@ -3,7 +3,6 @@ from django.urls import reverse
 from P8.models import SUBSTITUT, Profil, CATEGORIES, PRODUIT
 from django.contrib.auth.models import User
 from Pur_Beurre.wsgi import *
-import os
 from django.db.models import Q
 
 
@@ -23,21 +22,22 @@ class GetTestCase(TestCase):
         self.assertEqual(products.NOM, "testProduct")
 
     def test_save_category(self):
+        """We test the backup of a category in BDD"""
         category = CATEGORIES.objects.get(NOM="testCat")
         self.assertEqual(category.NOM, "testCat")
 
     def test_min_nutriscore(self):
-        """On test la requête ORM pour obtenir des produits avec un nutriscore intéréssants"""
+        """We test the ORM query with filter"""
         ns_product = PRODUIT.objects.filter(NUTRISCORE__lt=4)
         ns_product = ns_product.get(CATEGORIE_ID=self.cat_key)
         print(ns_product.NUTRISCORE)
         self.assertIn(1, [1, 3])
-# On test la connexion d'un utilisateur
+
 
 class CodeHttp(TestCase):
+
     def setUp(self):
         self.c = Client()
-
     def test_page_200(self):
         """We test the obtaining of a 200 response on the home page"""
         response = self.c.get("/accueil")
