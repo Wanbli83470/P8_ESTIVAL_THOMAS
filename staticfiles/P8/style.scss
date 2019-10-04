@@ -1,3 +1,6 @@
+// Ligne commande == sass --watch style.scss:style.css
+
+
 $theme-colors: (
   "Rooibos_chocolat" : #C45525,
   "Moules_frites" : #345A61,
@@ -5,7 +8,6 @@ $theme-colors: (
   "Caramel_mou" : #DE9440,
   "Biscuit_trempé" : #E8A75D,
   "food" : #FFEBD6,
-
 );
 
 $titre-typo : "Open Sans", sans-serif;
