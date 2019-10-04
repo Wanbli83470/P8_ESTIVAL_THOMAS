@@ -144,22 +144,28 @@ def save(request, pk):
 
 def register(request):
     search_form = SearchForm()
+    error = False
+      # We post the registration form
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():  # if correct data, the user is saved.
+            form.save()
+            username = form.cleaned_data['username']
+            messages.success(request, f'Votre compte {username} est crée')
+            return redirect('/accueil')
 
-    form = UserCreationForm(request.POST)  # We post the registration form
-    if form.is_valid():  # if correct data, the user is saved.
-        form.save()
-        username = form.cleaned_data['username']
-        messages.success(request, f'Votre compte {username} est crée')
-        return redirect('/accueil')
-
+        else:
+            error = True
+            print(error)
+            print("Echec")
     else:
-        form = UserCreationForm()
-        print("Echec")
+        form = UserCreationForm(request.POST)
 
-    return render(request, 'P8/register.html', {'form': form, "var_color": var_color, 'search_form': search_form})
+    return render(request, 'P8/register.html', {'form': form, "var_color": var_color, 'search_form': search_form, 'error': error})
 
 
 def connexion(request):
+    search_form = SearchForm()
     global var_color
     error = False
     print("vue connexion")
@@ -182,7 +188,7 @@ def connexion(request):
     else:
         form = ConnexionForm()
 
-    return render(request, 'P8/connect.html', {'form': form, "var_color": var_color, 'error': error,})
+    return render(request, 'P8/connect.html', {'form': form, "var_color": var_color, 'error': error, "search_form": search_form})
 
 
 def deconnexion(request):
@@ -216,4 +222,6 @@ def user_products(request):
 
 # HTTP Error 400
 def server_error(request):
+    time.sleep(5)
+    return redirect('/accueil')
     return render(request, 'P8/500.html', {"var_color": var_color})

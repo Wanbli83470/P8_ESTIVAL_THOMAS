@@ -9,9 +9,10 @@
 
 
 
-
+{% if nb_products %}
 <h2 class="text-{{var_color}} text-center">Vous avez enregistré <strong> {{ nb_products }} </strong>produits ! </h2>
 <hr>
+
 <div class="container-fluid align-self-center">
     <div class="card-columns">
      {% for products in product %}
@@ -37,7 +38,10 @@
         {% else %}
              {% endif %}
     {% endfor %}
-
-
 </div>
+{% else %}
+<h2 class="text-{{var_color}} text-center">Vous n'avez pas encore enregistré de produits ! </h2>
+<hr>
+{% endif %}
+
 {% endblock content %}

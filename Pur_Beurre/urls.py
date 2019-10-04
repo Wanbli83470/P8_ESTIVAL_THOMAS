@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import (
 handler400, handler403, handler404, handler500
 )
-
+handler404 = 'P8.views.p_404_error'
 handler500 = 'P8.views.server_error'
 
 urlpatterns = [

@@ -2,22 +2,30 @@
 {% extends "P8/base.html" %}
 
 {% block title%}
-    Legal_Notice
+    Register
 {% endblock title%}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="container-fluid p-3 text-white text-center">
-    <div class="shadow-lg p-4 mb-4 bg-{{ var_color }} rounded">
+    <div class="shadow-lg pt-5 bg-{{ var_color }} rounded">
     <h1>Inscription</h1>
+    <hr class="border border-white">
 
-        <form action="{% url 'register' %}" method="post">
+        <form class="w-75 text-center d-block mx-auto" action="{% url 'register' %}" method="post">
             {% csrf_token %}
-            {{ form }}
+            {{ form|crispy }}
 
-            <button type="submit" value="username" class="btn btn-outline-light">S'inscrire</button>
+            <button type="submit" value="username" class="btn btn-outline-light btn-lg">S'inscrire</button>
 
         </form>
+        {% if error %}
+        <hr class="border-white m-2">
+            <p > <strong> Inscription échoué, Prêtez attention à bien remplir les conditions </strong> </p>
+        {% else %}
+        {% endif %}
+            
     <div>
+        
 </div>
 {% endblock content %}
