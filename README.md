@@ -1,6 +1,7 @@
 Project : Pur Beurre : 8
 =================
 
+Tableau Trello : https://trello.com/b/5GwxE5Nu/p8
 
 Adresse de déploiement : https://wanblipurbeurre.herokuapp.com
 

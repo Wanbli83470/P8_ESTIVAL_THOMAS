@@ -42,8 +42,3 @@ class CodeHttp(TestCase):
         """We test the obtaining of a 200 response on the home page"""
         response = self.c.get("/accueil")
         self.assertEqual(response.status_code, 200)
-
-    def test_page_404(self):
-        """We test the obtaining of a 404 response on the page error"""
-        response = self.c.get("/adressess/")
-        self.assertEqual(response.status_code, 404)

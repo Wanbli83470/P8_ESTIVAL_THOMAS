@@ -14,8 +14,6 @@ class RegistrationForm(UserCreationForm):
             'email',
         )
 
-
-
 class ConnexionForm(forms.Form):
     """Creating the form class for the user login"""
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
