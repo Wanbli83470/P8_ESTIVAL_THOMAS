@@ -56,6 +56,6 @@ products = PRODUIT(NOM="test-produit", PRODUIT_URL="www.test.fr", STORE="Le stor
 Sauvegarder un produit en substitut :
 save_product = SUBSTITUT(PRODUIT_ID=450, USER_FAVORITE=request.user)
 
-tester si substitut existant
+tester si substitut existant :
 from P8.models import SUBSTITUT, CATEGORIES, PRODUIT
 test_sub = SUBSTITUT.objects.get_or_create(PRODUIT_ID="sweet-snacks", USER_FAVORITE="www")
