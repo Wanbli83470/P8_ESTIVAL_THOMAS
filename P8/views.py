@@ -1,6 +1,6 @@
 """ imporation de render afin d'afficher le code HTML """
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
-from .forms import ConnexionForm, SearchForm
+from .forms import ConnexionForm, SearchForm, RegistrationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, Http404
@@ -147,7 +147,7 @@ def register(request):
     error = False
       # We post the registration form
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():  # if correct data, the user is saved.
             form.save()
             username = form.cleaned_data['username']
@@ -159,7 +159,7 @@ def register(request):
             print(error)
             print("Echec")
     else:
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
 
     return render(request, 'P8/register.html', {'form': form, "var_color": var_color, 'search_form': search_form, 'error': error})
 

@@ -1,5 +1,19 @@
 """the Django forms class is used to automatically generate HTML forms with the right parameters"""
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'email',
+        )
+
 
 
 class ConnexionForm(forms.Form):
