@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY_P8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'wanblipurbeurre.herokuapp.com']
+ALLOWED_HOSTS = ['178.128.32.237',]
 
 
 # Application definition
@@ -79,13 +79,14 @@ WSGI_APPLICATION = 'Pur_Beurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'projet8',
-        'USER': 'thomas',
+        'NAME': 'pur_beurre',
+        'USER': 'wanbli',
         'PASSWORD': 'jpmfmaemp73%',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 # Password validation
@@ -124,11 +125,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'P8/static'),
+    os.path.join(BASE_DIR, 'Pur_Beurre/static'),
 )
