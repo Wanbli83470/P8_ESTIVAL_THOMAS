@@ -70,7 +70,7 @@ class GetProductApi:
         count = info['count']
         page_size = info['page_size']
 
-        nbPages = int(math.floor(count / page_size) + 1)  # On déduit le nombre de pages
+        nbPages = int(math.floor(int(count) / int(page_size)) + 1)  # On déduit le nombre de pages
         print("numbers pages = " + str(nbPages))
         i = 0
         live_page = 1
