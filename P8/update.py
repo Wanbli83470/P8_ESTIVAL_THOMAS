@@ -1,8 +1,14 @@
+"""
+Using the os module to retrieve cron variables
+Use of datetime to retrieve the current date to enter in the mail
+use of psycopg2 to connect to the postegreSQL DB
+import of mail_ to send a notification email to my mailbox
+using datetime to write to a report.txt file
+"""
+
 import psycopg2
 from food_scrap import GetProductApi
 from mail_ import Mailing
-import smtplib
-import ssl
 import datetime
 HOST = "localhost"
 USER = "wanbli"
