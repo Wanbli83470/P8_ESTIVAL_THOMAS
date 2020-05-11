@@ -71,8 +71,8 @@ try :
 
     with open('/home/thomas/Bureau/rapport_update_P10.txt', 'a') as f:
         f.write(f"\nBase de données actualisée le : {dt.day} {dict_date[dt.month]} {dt.year}.")
-    Mailing(True_False=1).test_mail()
+    Mailing(true_false=1).test_mail()
 except:
     with open('/home/thomas/Bureau/rapport_update_P10.txt', 'a') as f:
         f.write(f"\nEchec d'actualisation de la BDD le : {dt.day} {dict_date[dt.month]} {dt.year}.")
-    Mailing(True_False=0).test_mail()
+    Mailing(true_false=0).test_mail()
